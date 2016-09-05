@@ -26,7 +26,6 @@
             android:layout_weight="1"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
-
             <ImageView
                 android:id="@+id/prefecture_img"
                 android:layout_width="match_parent"
