@@ -8,9 +8,15 @@
         android:id="@+id/main_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/main_bottom_selector"/>
+        android:layout_above="@+id/main_split"/>
 
-    <RadioGroup
+    <ImageView
+        android:id="@+id/main_split"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrad"
+        android:layout_above="@+id/main_bottom_selector"/>
+    <LinearLayout
         android:id="@id/main_bottom_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,16 +45,14 @@
             android:button="@null"
             android:drawableTop="@drawable/main_bottom_goods_selector"
             android:onClick="onClick"/>
-        <RadioButton
+        <ImageView
             android:id="@+id/main_bottom_selector_customer_show"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/add_share_icon"
-            android:paddingTop="10dp"
-            android:gravity="center"
-            android:onClick="onClick"/>
+            android:src="@drawable/add_share_icon"
+            android:padding="10dp"
+            android:onClick="onClick" />
         <RadioButton
             android:id="@+id/main_bottom_selector_show"
             android:layout_width="0dp"
@@ -71,5 +75,5 @@
             android:button="@null"
             android:drawableTop="@drawable/main_bottom_mine_selector"
             android:onClick="onClick"/>
-    </RadioGroup>
+    </LinearLayout>
 </RelativeLayout>

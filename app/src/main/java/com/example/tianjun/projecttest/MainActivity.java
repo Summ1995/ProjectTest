@@ -5,18 +5,33 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tianjun.projecttest.Adapter.MainPagerAdapter;
+import com.example.tianjun.projecttest.CustomerView.CustomerAppCompatActivity;
 import com.example.tianjun.projecttest.CustomerView.OtherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends CustomerAppCompatActivity {
     private List<Fragment> mFragmentList;
-    private ViewPager mMainPager;
-    private RadioGroup mMainSelector;
+    @BindView(R.id.main_pager)
+    ViewPager mMainPager;
+    @BindView(R.id.main_bottom_selector_home)
+    RadioButton mHomeSelector;
+    @BindView(R.id.main_bottom_selector_goods)
+    RadioButton mGoodsSelector;
+    @BindView(R.id.main_bottom_selector_show)
+    RadioButton mShowSelector;
+    @BindView(R.id.main_bottom_selector_mine)
+    RadioButton mMineSelecotr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        ButterKnife.bind(this);
         loadData();
         initView();
     }
@@ -39,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mMainPager = (ViewPager) findViewById(R.id.main_pager);
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),mFragmentList);
         mMainPager.setAdapter(mainPagerAdapter);
     }
@@ -48,19 +63,35 @@ public class MainActivity extends AppCompatActivity {
         int id = view.getId();
         switch (id){
             case R.id.main_bottom_selector_home:
+                setSelectorUnChecked();
+                mHomeSelector.setChecked(true);
                 mMainPager.setCurrentItem(0);
                 break;
             case R.id.main_bottom_selector_goods:
+                setSelectorUnChecked();
+                mGoodsSelector.setChecked(true);
                 mMainPager.setCurrentItem(1);
                 break;
             case R.id.main_bottom_selector_show:
+                setSelectorUnChecked();
+                mShowSelector.setChecked(true);
                 mMainPager.setCurrentItem(2);
                 break;
             case R.id.main_bottom_selector_mine:
+                setSelectorUnChecked();
+                mMineSelecotr.setChecked(true);
                 mMainPager.setCurrentItem(3);
                 break;
             case R.id.main_bottom_selector_customer_show:
                 break;
         }
     }
+
+    private void setSelectorUnChecked(){
+        mHomeSelector.setChecked(false);
+        mGoodsSelector.setChecked(false);
+        mShowSelector.setChecked(false);
+        mMineSelecotr.setChecked(false);
+    }
+
 }
