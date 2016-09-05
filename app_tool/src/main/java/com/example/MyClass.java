@@ -20,7 +20,6 @@ public class MyClass {
         shoppingcar.addStringProperty("shop_price");
         shoppingcar.addIntProperty("num");
 
-
         Entity addressInfo=schema.addEntity("AddressInfo");
         Entity userInfo=schema.addEntity("UserInfo");
         //自动生成
