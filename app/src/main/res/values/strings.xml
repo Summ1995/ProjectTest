@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjectTest</string>
+    <string name="home">首页</string>
+    <string name="goods">单品</string>
+    <string name="show">晒吧</string>
+    <string name="mine">我</string>
 </resources>

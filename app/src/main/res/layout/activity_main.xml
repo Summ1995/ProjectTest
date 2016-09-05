@@ -3,14 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tianjun.projecttest.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/main_bottom_selector"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <RadioButton
+            android:id="@+id/main_bottom_selector_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/home"/>
+        <RadioButton
+            android:id="@+id/main_bottom_selector_goods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/goods"/>
+        <RadioButton
+            android:id="@+id/main_bottom_selector_customer_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/add_share_icon"/>
+        <RadioButton
+            android:id="@+id/main_bottom_selector_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/show"/>
+        <RadioButton
+            android:id="@+id/main_bottom_selector_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mine"/>
+    </RadioGroup>
 </RelativeLayout>
