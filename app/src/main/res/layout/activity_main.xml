@@ -4,9 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.tianjun.projecttest.MainActivity">
+    <com.example.tianjun.projecttest.CustomerView.DontMoveViewPager
+        android:id="@+id/main_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_bottom_selector"/>
 
     <RadioGroup
-        android:id="@+id/main_bottom_selector"
+        android:id="@id/main_bottom_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -14,33 +19,57 @@
         <RadioButton
             android:id="@+id/main_bottom_selector_home"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/home"/>
+            android:text="@string/home"
+            android:textColor="@drawable/main_bottom_home_selector"
+            android:gravity="center"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/main_bottom_home_selector"
+            android:onClick="onClick"/>
         <RadioButton
             android:id="@+id/main_bottom_selector_goods"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/goods"/>
+            android:text="@string/goods"
+            android:textColor="@drawable/main_bottom_home_selector"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/main_bottom_goods_selector"
+            android:onClick="onClick"/>
         <RadioButton
             android:id="@+id/main_bottom_selector_customer_show"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:background="@drawable/add_share_icon"/>
+            android:drawableTop="@drawable/add_share_icon"
+            android:paddingTop="10dp"
+            android:gravity="center"
+            android:onClick="onClick"/>
         <RadioButton
             android:id="@+id/main_bottom_selector_show"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/show"/>
+            android:text="@string/show"
+            android:textColor="@drawable/main_bottom_home_selector"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/main_bottom_show_selector"
+            android:onClick="onClick"/>
         <RadioButton
             android:id="@+id/main_bottom_selector_mine"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/mine"/>
+            android:text="@string/mine"
+            android:textColor="@drawable/main_bottom_home_selector"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/main_bottom_mine_selector"
+            android:onClick="onClick"/>
     </RadioGroup>
 </RelativeLayout>
