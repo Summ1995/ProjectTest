@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class HttpRequest {
     public static HttpService mService;
-    public static final String BASE_URL = "http://atp.fulishe.com/ClientApi";
+    public static final String BASE_URL = "http://atp.fulishe.com/ClientApi/";
 
     public static HttpService getHttpService(){
         if (mService == null){

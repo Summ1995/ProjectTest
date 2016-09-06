@@ -2,17 +2,16 @@ package com.example.tianjun.projecttest;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tianjun.projecttest.Adapter.MainPagerAdapter;
 import com.example.tianjun.projecttest.CustomerView.CustomerAppCompatActivity;
+import com.example.tianjun.projecttest.CustomerView.DontMoveViewPager;
 import com.example.tianjun.projecttest.CustomerView.OtherFragment;
+import com.example.tianjun.projecttest.CustomerView.ViewPagerScroller;
+import com.example.tianjun.projecttest.Home.HomeMainFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends CustomerAppCompatActivity {
     private List<Fragment> mFragmentList;
     @BindView(R.id.main_pager)
-    ViewPager mMainPager;
+    DontMoveViewPager mMainPager;
     @BindView(R.id.main_bottom_selector_home)
     RadioButton mHomeSelector;
     @BindView(R.id.main_bottom_selector_goods)
@@ -48,7 +47,7 @@ public class MainActivity extends CustomerAppCompatActivity {
 
     private void loadData() {
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(OtherFragment.newInstance("首页"));
+        mFragmentList.add(new HomeMainFragment());
         mFragmentList.add(OtherFragment.newInstance("单品"));
         mFragmentList.add(OtherFragment.newInstance("晒吧"));
         mFragmentList.add(OtherFragment.newInstance("我"));
@@ -56,6 +55,9 @@ public class MainActivity extends CustomerAppCompatActivity {
 
     private void initView() {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),mFragmentList);
+        ViewPagerScroller scroller = new ViewPagerScroller(this);
+        scroller.setScrollDuration(0);
+        scroller.initViewPagerScroll(mMainPager);
         mMainPager.setAdapter(mainPagerAdapter);
     }
 
