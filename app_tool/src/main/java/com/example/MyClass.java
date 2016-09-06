@@ -41,6 +41,8 @@ public class MyClass {
         userInfo.addStringProperty("phoneNum");
         userInfo.addStringProperty("email");
 
+
+
         //自动生成
         try {
             new DaoGenerator().generateAll(schema,"../ProjectTest/app/src/main/java");
