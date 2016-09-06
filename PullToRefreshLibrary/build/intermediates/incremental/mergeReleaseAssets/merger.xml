@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\AndroidDemo3\ProjectTest\PullToRefreshLibrary\src\main\assets"/><source path="D:\AndroidDemo3\ProjectTest\PullToRefreshLibrary\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\AndroidDemo3\ProjectTest\PullToRefreshLibrary\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\AndroidDemo2\ProjectTest\PullToRefreshLibrary\src\main\assets"/><source path="D:\AndroidDemo2\ProjectTest\PullToRefreshLibrary\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\AndroidDemo2\ProjectTest\PullToRefreshLibrary\src\release\assets"/></dataSet></merger>
