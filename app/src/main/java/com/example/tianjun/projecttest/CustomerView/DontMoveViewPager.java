@@ -18,7 +18,6 @@ public class DontMoveViewPager extends  android.support.v4.view.ViewPager{
     public DontMoveViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if (isCanScroll){
