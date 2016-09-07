@@ -20,4 +20,7 @@ public interface HttpService {
 
     @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
     Call<ListHeadBean> queryHomeListHeadData();
+
+    @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
+    Call<ListHeadBean> queryHomeListHeadData11();
 }
