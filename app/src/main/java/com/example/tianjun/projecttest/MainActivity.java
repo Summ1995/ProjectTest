@@ -12,6 +12,8 @@ import com.example.tianjun.projecttest.CustomerView.DontMoveViewPager;
 import com.example.tianjun.projecttest.CustomerView.OtherFragment;
 import com.example.tianjun.projecttest.CustomerView.ViewPagerScroller;
 import com.example.tianjun.projecttest.Home.HomeMainFragment;
+import com.example.tianjun.projecttest.SQLite.Product.Product;
+import com.example.tianjun.projecttest.View.Product.Product_Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends CustomerAppCompatActivity {
     private List<Fragment> mFragmentList;
-    @BindView(R.id.main_pager)
+//    @BindView(R.id.main_pager)
     DontMoveViewPager mMainPager;
     @BindView(R.id.main_bottom_selector_home)
     RadioButton mHomeSelector;
@@ -36,6 +38,7 @@ public class MainActivity extends CustomerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMainPager= (DontMoveViewPager) findViewById(R.id.main_pager);
         init();
     }
 
@@ -48,7 +51,7 @@ public class MainActivity extends CustomerAppCompatActivity {
     private void loadData() {
         mFragmentList = new ArrayList<>();
         mFragmentList.add(new HomeMainFragment());
-        mFragmentList.add(OtherFragment.newInstance("单品"));
+        mFragmentList.add(Product_Fragment.newInstance());
         mFragmentList.add(OtherFragment.newInstance("晒吧"));
         mFragmentList.add(OtherFragment.newInstance("我"));
     }

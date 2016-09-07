@@ -4,6 +4,9 @@ import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
+import com.example.tianjun.projecttest.Bean.Product.Product_Head_Gson;
+import com.example.tianjun.projecttest.Bean.Product.Product_List_Gson;
+import com.example.tianjun.projecttest.Bean.Product.Product_Tab_Gson;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -24,4 +27,16 @@ public interface HttpService {
 
     @GET("topic.php?act=topic_cate&debug=true&api_version=1.0")
     Call<CategoryBean> queryHomeCategoryData();
+    @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
+    Call<ListHeadBean> queryHomeListHeadData11();
+
+    @GET("tags.php?act=hot_goods_category&debug=true&api_version=1.0")
+    Call<Product_Tab_Gson> openProductTabGsonCall();
+
+    @GET("tags.php?api_version=1.0&debug=true&act=banner&type=1")
+    Call<Product_Head_Gson> openProductHeadGsonCall();
+
+    @GET("category.php?api_version=1.0&act=search_category_goods_list&c_id=0&order_price=0&debug=true&client_id=&key=")
+    Call<Product_List_Gson> openProductListGsonCall(@Query("page_num") int page_num, @Query("page") int page);
+
 }

@@ -1,93 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <android.support.v4.view.ViewPager
+        android:id="@+id/head_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="250dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp">
+        android:layout_height="100dp">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="5dp">
+
             <ImageView
                 android:id="@+id/seckill_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/myviewtitlebk_default"/>
+                android:scaleType="fitXY" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingRight="5dp">
+
             <ImageView
                 android:id="@+id/prefecture_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:paddingRight="5dp">
+
             <ImageView
                 android:id="@+id/hot_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="5dp">
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp">
+
             <ImageView
                 android:id="@+id/recommend_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/popularity_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/hotgoods_title"/>
+            android:src="@drawable/hotgoods_title" />
+
         <TextView
             android:id="@+id/popularity_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="人气推荐"
-            android:layout_toRightOf="@id/popularity_img"
             android:layout_alignBottom="@id/popularity_img"
+            android:layout_toRightOf="@id/popularity_img"
+            android:text="人气推荐"
             android:textColor="#F1873a" />
+
         <TextView
             android:id="@+id/more_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="更多>"
-            android:textColor="#f18e45"
+            android:layout_alignParentRight="true"
             android:layout_margin="5dp"
-            android:layout_alignParentRight="true"/>
+            android:text="更多>"
+            android:textColor="#f18e45" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/popularity_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/popularity_tv"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp" />
     </RelativeLayout>
 
 </LinearLayout>
