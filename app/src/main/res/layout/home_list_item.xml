@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/home_list_item_img"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true" />
+    <ImageView
+        android:id="@+id/home_list_item_share_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/shared"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/home_list_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Black16Font2"
+        android:text="111"
+        android:layout_below="@id/home_list_item_img"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/home_list_item_key_words"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Gray14Font"
+        android:text="111"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@id/home_list_item_title"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/home_list_item_title"/>
+    <RelativeLayout
+        android:id="@+id/home_list_item_split"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_list_item_key_words"
+        android:layout_alignLeft="@id/home_list_item_key_words">
+        <ImageView
+            android:id="@+id/home_list_item_seperator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/seperator"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGrad"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/home_list_item_seperator"
+            android:layout_alignTop="@id/home_list_item_seperator"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_list_item_seperator"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/home_list_item_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/home_list_item_goods_more"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/radio_button"
+                    android:layout_gravity="right|center_vertical"
+                    android:text="@string/watch_more"
+                    style="@style/WatchMore"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

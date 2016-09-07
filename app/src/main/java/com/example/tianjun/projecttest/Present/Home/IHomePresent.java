@@ -8,5 +8,9 @@ import com.example.tianjun.projecttest.View.Home.IHomeView;
 public interface IHomePresent {
     void requestTabData(int requestCode);
 
+    void requestListData(int count,int id,int requestCode);
+
+    void requestListHeadData(int requestCode);
+
     void httpRequestSuccess(Object object,int requestCode);
 }

@@ -5,5 +5,7 @@ package com.example.tianjun.projecttest.Util;
  */
 public class ConstantClz {
     public static final int HOME_TAB_REQUEST_CODE = 1;
+    public static final int HOME_LIST_REQUEST_CODE = 2;
+    public static final int HOME_LIST_HEAD_REQUEST_CODE = 3;
     public static final String HOME_TAB_CATEGORY_CODE = "category";
 }

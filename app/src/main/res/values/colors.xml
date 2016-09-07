@@ -6,4 +6,6 @@
     <color name="colorTheme">#F1873a</color>
     <color name="colorGrad">#c4c4c4</color>
     <color name="color96">#969696</color>
+    <color name="coloree">#eeeeee</color>
+    <color name="colorImgBk">#f8fcf8</color>
 </resources>
