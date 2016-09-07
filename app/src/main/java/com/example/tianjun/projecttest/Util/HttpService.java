@@ -29,16 +29,11 @@ public interface HttpService {
 
     @GET("tags.php?act=hot_goods_category&debug=true&api_version=1.0")
     Call<Product_Tab_Gson> openProductTabGsonCall();
+
     @GET("tags.php?api_version=1.0&debug=true&act=banner&type=1")
     Call<Product_Head_Gson> openProductHeadGsonCall();
 
-    @GET("category.php")
-    Call<Product_List_Gson> openProductListGsonCall(@Query("api_version") String api_version,
-                                                    @Query("act") String act, @Query("c_id") int c_id,
-                                                    @Query("order_price") int order_price,
-                                                    @Query("page_num") int page_num,
-                                                    @Query("page") int page,
-                                                    @Query("debug") boolean debug,
-                                                    @Query("client_id") String client_id,
-                                                    @Query("key") String key);
+    @GET("category.php?api_version=1.0&act=search_category_goods_list&c_id=0&order_price=0&debug=true&client_id=&key=")
+    Call<Product_List_Gson> openProductListGsonCall(@Query("page_num") int page_num, @Query("page") int page);
+
 }

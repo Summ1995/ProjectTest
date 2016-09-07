@@ -17,17 +17,19 @@
             android:id="@+id/title_img"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="200dp" />
 
         <TextView
             android:id="@+id/brand_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/productname_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -64,17 +66,19 @@
             android:id="@+id/title_img2"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="200dp" />
 
         <TextView
             android:id="@+id/brand_tv2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/productname_tv2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

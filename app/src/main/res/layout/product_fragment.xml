@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.example.tianjun.projecttest.CustomerView.DontMoveViewPager
-        android:id="@+id/fragment_viewpager"
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/product_resfreshlistview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/product_tab_menu" />

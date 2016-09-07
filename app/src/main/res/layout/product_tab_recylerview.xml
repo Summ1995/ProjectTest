@@ -6,8 +6,8 @@
     android:gravity="center"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp">
 
     <TextView
         android:id="@+id/tab_tv"
@@ -15,5 +15,5 @@
         android:layout_height="wrap_content"
         android:text="sda"
         android:textColor="@drawable/tab_font_selector"
-        android:textSize="17sp"/>
+        android:textSize="15sp"/>
 </RelativeLayout>
