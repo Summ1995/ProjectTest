@@ -55,6 +55,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     private ListHeadAdapter mListHeadAdapter;
     private View mListHeadView;
     private LinearLayout headSign;
+    private ViewPager mHeadPager;
     private boolean hadHead = false;
     private boolean isBottom = false;
 
@@ -65,6 +66,10 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mHomePresent = new HomePresent(this);
         mListData = new ArrayList<>();
         mListHeadData = new ArrayList<>();
+
+        mListHeadView = LayoutInflater.from(mContext).inflate(R.layout.home_list_head, null);
+        mHeadPager = (ViewPager) mListHeadView.findViewById(R.id.home_list_head_pager);
+
     }
 
     @Nullable
@@ -160,6 +165,9 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         public void handleMessage(Message msg) {
             mListViewAdapter.notifyDataSetChanged();
             mHomeList.onRefreshComplete();
+            if (count == 10){
+                mHomeList.getRefreshableView().setSelectionAfterHeaderView();
+            }
         }
     };
 
@@ -172,32 +180,29 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mListHeadData = bean;
         initListHead();
         mHomePresent.requestListData(count,0,ConstantClz.HOME_LIST_REQUEST_CODE);
+        initHeadSign();
+        setSignLightByIndex(0);
     }
 
     /**
      * 初始化list的头部视图
      */
     private void initListHead(){
-        mListHeadView = LayoutInflater.from(mContext).inflate(R.layout.home_list_head, null);
-        ViewPager headPager = (ViewPager) mListHeadView.findViewById(R.id.home_list_head_pager);
-
         if (mListHeadAdapter != null){
             mListHeadData.clear();
             mListHeadData.addAll(mListHeadData);
             mListHeadAdapter.notifyDataSetChanged();
-            headPager.setCurrentItem(0);
         }else {
 
-            initHeadSign();
             mListHeadAdapter = new ListHeadAdapter(mListHeadData, mContext);
-            headPager.setAdapter(mListHeadAdapter);
-            headPager.addOnPageChangeListener(this);
+            mHeadPager.setAdapter(mListHeadAdapter);
+            mHeadPager.addOnPageChangeListener(this);
         }
-        setSignLightByIndex(0);
         if (!hadHead){
             mHomeList.getRefreshableView().addHeaderView(mListHeadView);
             hadHead = true;
         }
+        mHeadPager.setCurrentItem(0);
     }
 
     /**
