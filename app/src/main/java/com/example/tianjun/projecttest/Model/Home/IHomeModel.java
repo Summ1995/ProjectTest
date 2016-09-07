@@ -11,4 +11,6 @@ public interface IHomeModel {
     void RequestListData(int count,int id,IHomePresent callBack,int requestCode);
 
     void RequestListHeadData(IHomePresent callBack,int requestCode);
+
+    void RequestCategoryData(IHomePresent callBack,int requestCode);
 }

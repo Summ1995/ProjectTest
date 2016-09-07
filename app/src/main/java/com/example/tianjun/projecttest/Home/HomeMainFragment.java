@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ScrollingView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,10 +16,13 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.example.tianjun.projecttest.Adapter.Home.ListHeadAdapter;
 import com.example.tianjun.projecttest.Adapter.Home.ListViewAdapter;
 import com.example.tianjun.projecttest.Adapter.Home.TabAdapter;
+import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
@@ -43,6 +47,10 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     RecyclerView mHomeTab;
     @BindView(R.id.home_list)
     PullToRefreshListView mHomeList;
+    @BindView(R.id.home_category)
+    RelativeLayout mCategoryRL;
+    @BindView(R.id.home_category_scroll)
+    ScrollView mCategorySV;
 
     private static List<TabBean.InfoBean> mTabBean;
     private Context mContext;
@@ -126,11 +134,20 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     public void initList(String catId){
         switch (catId){
             case ConstantClz.HOME_TAB_CATEGORY_CODE:
+                mCategorySV.setVisibility(View.VISIBLE);
+                mHomeList.setVisibility(View.GONE);
+                initategory();
                 break;
             default:
+                mCategorySV.setVisibility(View.GONE);
+                mHomeList.setVisibility(View.VISIBLE);
                 initListView(catId);
                 break;
         }
+    }
+
+    private void initategory(){
+        mHomePresent.requestCategoryData(ConstantClz.HOME_CATEGORY_REQUEST_CODE);
     }
 
     /**
@@ -182,6 +199,15 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mHomePresent.requestListData(count,0,ConstantClz.HOME_LIST_REQUEST_CODE);
         initHeadSign();
         setSignLightByIndex(0);
+    }
+
+    /**
+     * 返回分类信息
+     * @param bean
+     */
+    @Override
+    public void getRequestCategoryBean(CategoryBean.InfoBean bean) {
+        HomeCategoryView.initCategory(mCategoryRL,bean,mContext);
     }
 
     /**

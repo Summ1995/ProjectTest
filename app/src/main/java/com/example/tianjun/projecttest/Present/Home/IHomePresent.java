@@ -12,5 +12,7 @@ public interface IHomePresent {
 
     void requestListHeadData(int requestCode);
 
+    void requestCategoryData(int requestCode);
+
     void httpRequestSuccess(Object object,int requestCode);
 }

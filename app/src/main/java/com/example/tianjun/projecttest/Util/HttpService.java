@@ -1,5 +1,6 @@
 package com.example.tianjun.projecttest.Util;
 
+import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
@@ -21,4 +22,6 @@ public interface HttpService {
     @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
     Call<ListHeadBean> queryHomeListHeadData();
 
+    @GET("topic.php?act=topic_cate&debug=true&api_version=1.0")
+    Call<CategoryBean> queryHomeCategoryData();
 }

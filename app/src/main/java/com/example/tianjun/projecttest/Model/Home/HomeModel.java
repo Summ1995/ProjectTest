@@ -1,5 +1,6 @@
 package com.example.tianjun.projecttest.Model.Home;
 
+import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
@@ -56,6 +57,21 @@ public class HomeModel implements IHomeModel{
 
             @Override
             public void onFailure(Call<ListHeadBean> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void RequestCategoryData(final IHomePresent callBack,final int requestCode) {
+        HttpRequest.getHttpService().queryHomeCategoryData().enqueue(new Callback<CategoryBean>() {
+            @Override
+            public void onResponse(Call<CategoryBean> call, Response<CategoryBean> response) {
+                callBack.httpRequestSuccess(response.body(),requestCode);
+            }
+
+            @Override
+            public void onFailure(Call<CategoryBean> call, Throwable t) {
 
             }
         });

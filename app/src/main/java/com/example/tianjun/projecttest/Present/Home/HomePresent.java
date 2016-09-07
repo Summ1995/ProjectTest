@@ -1,5 +1,6 @@
 package com.example.tianjun.projecttest.Present.Home;
 
+import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
@@ -35,6 +36,11 @@ public class HomePresent implements IHomePresent{
     }
 
     @Override
+    public void requestCategoryData(int requestCode) {
+        mHomeModel.RequestCategoryData(this,requestCode);
+    }
+
+    @Override
     public void httpRequestSuccess(Object object, int requestCode) {
         if (object != null){
             switch (requestCode){
@@ -49,6 +55,10 @@ public class HomePresent implements IHomePresent{
                 case ConstantClz.HOME_LIST_HEAD_REQUEST_CODE:
                     ListHeadBean listHeadBean = (ListHeadBean) object;
                     mHomeView.getRequestListHeadBean(listHeadBean.getInfo().getItems());
+                    break;
+                case ConstantClz.HOME_CATEGORY_REQUEST_CODE:
+                    CategoryBean category = (CategoryBean) object;
+                    mHomeView.getRequestCategoryBean(category.getInfo());
                     break;
             }
         }
