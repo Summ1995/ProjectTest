@@ -7,4 +7,8 @@ import com.example.tianjun.projecttest.Present.Home.IHomePresent;
  */
 public interface IHomeModel {
     void RequestTabData(IHomePresent callBack,int requestCode);
+
+    void RequestListData(int count,int id,IHomePresent callBack,int requestCode);
+
+    void RequestListHeadData(IHomePresent callBack,int requestCode);
 }

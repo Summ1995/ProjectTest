@@ -12,4 +12,29 @@
         <item name="android:textColor">@color/color96</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="Black16Font2">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Gray14Font">
+        <item name="android:textColor">@color/color96</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme15Font">
+        <item name="android:textColor">@color/colorTheme</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Gray15Font">
+        <item name="android:textColor">@color/color96</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="WatchMore">
+        <item name="android:textColor">@color/color96</item>
+        <item name="android:background">@color/colorGrad</item>
+    </style>
 </resources>
