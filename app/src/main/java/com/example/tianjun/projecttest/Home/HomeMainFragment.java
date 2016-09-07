@@ -106,6 +106,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mHomeList.setOnRefreshListener(this);
         mHomeList.setOnScrollListener(this);
         initListView(mCurrentCatId);
+
     }
 
 
