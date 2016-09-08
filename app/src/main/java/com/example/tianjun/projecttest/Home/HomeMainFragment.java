@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ScrollingView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -21,7 +23,6 @@ import android.widget.ScrollView;
 
 import com.example.tianjun.projecttest.Adapter.Home.ListHeadAdapter;
 import com.example.tianjun.projecttest.Adapter.Home.ListViewAdapter;
-import com.example.tianjun.projecttest.Adapter.Home.TabAdapter;
 import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
@@ -44,7 +45,7 @@ import butterknife.ButterKnife;
  */
 public class HomeMainFragment extends Fragment implements IHomeView,PullToRefreshBase.OnRefreshListener2,AbsListView.OnScrollListener,ViewPager.OnPageChangeListener {
     @BindView(R.id.home_tab)
-    RecyclerView mHomeTab;
+    TabLayout mHomeTab;
     @BindView(R.id.home_list)
     PullToRefreshListView mHomeList;
     @BindView(R.id.home_category)
@@ -66,6 +67,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     private ViewPager mHeadPager;
     private boolean hadHead = false;
     private boolean isBottom = false;
+    private LayoutInflater mInflater;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mHomePresent = new HomePresent(this);
         mListData = new ArrayList<>();
         mListHeadData = new ArrayList<>();
-
+        mInflater = LayoutInflater.from(mContext);
         mListHeadView = LayoutInflater.from(mContext).inflate(R.layout.home_list_head, null);
         mHeadPager = (ViewPager) mListHeadView.findViewById(R.id.home_list_head_pager);
 
@@ -104,17 +106,63 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      * 给tab赋值,初始化listview
      */
     private void setHomeTab(){
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        mHomeTab.setLayoutManager(linearLayoutManager);
-        TabAdapter tabAdapter = new TabAdapter(mTabBean,mContext,this);
-        mHomeTab.setAdapter(tabAdapter);
-
+        initTab();
         mListViewAdapter = new ListViewAdapter(mListData,mContext);
         mHomeList.setAdapter(mListViewAdapter);
         mHomeList.setOnRefreshListener(this);
         mHomeList.setOnScrollListener(this);
         initListView(mCurrentCatId);
     }
+
+    private void initTab(){
+        for (int i = 0; i < mTabBean.size() + 1; i++) {
+            TabLayout.Tab tab = mHomeTab.newTab();
+            if (i == mTabBean.size()){
+                tab.setIcon(R.drawable.arrow_index_down);
+                tab.setTag(ConstantClz.HOME_TAB_CATEGORY_CODE);
+            }else {
+                tab.setText(mTabBean.get(i).getCat_name());
+                tab.setTag(mTabBean.get(i).getCat_id());
+            }
+            mHomeTab.addTab(tab);
+        }
+
+        mHomeTab.setOnTabSelectedListener(tabsClickListener);
+    }
+
+    private TabLayout.OnTabSelectedListener tabsClickListener = new TabLayout.OnTabSelectedListener() {
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            String catId = tab.getTag().toString();
+            if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE) && mCategorySV.getVisibility() == View.VISIBLE){
+                tab.setIcon(R.drawable.arrow_index_down);
+            }else if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE)){
+                tab.setIcon(R.drawable.arrow_red_up);
+            }
+            initList(catId);
+        }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+            String catId = tab.getTag().toString();
+            if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE)){
+                if (mCategorySV.getVisibility() == View.VISIBLE){
+                    mCategorySV.setVisibility(View.GONE);
+                    mHomeList.setVisibility(View.VISIBLE);
+                    tab.setIcon(R.drawable.arrow_index_down);
+                }else {
+                    tab.setIcon(R.drawable.arrow_red_up);
+                    initList(catId);
+                }
+            }else{
+                initList(catId);
+            }
+        }
+    };
 
 
     /**
