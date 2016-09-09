@@ -10,4 +10,10 @@ public class PublicMethod {
     public static int formatDIP(int num, Context context){
        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, context.getResources().getDisplayMetrics());
     }
+
+    public static float getScaleByScreenWidth(Context context,String width){
+        int screenWidth = context.getResources().getDisplayMetrics().widthPixels / 2;
+        float mScale = screenWidth/Float.parseFloat(width);
+        return mScale;
+    }
 }

@@ -144,6 +144,10 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
 
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {
+            String catId = tab.getTag().toString();
+            if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE)){
+                tab.setIcon(R.drawable.arrow_index_down);
+            }
         }
 
         @Override

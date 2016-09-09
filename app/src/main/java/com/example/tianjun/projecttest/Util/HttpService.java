@@ -1,5 +1,8 @@
 package com.example.tianjun.projecttest.Util;
 
+import com.example.tianjun.projecttest.Bean.Detail.RelativeTopicBean;
+import com.example.tianjun.projecttest.Bean.Detail.CommentBean;
+import com.example.tianjun.projecttest.Bean.Detail.DetailsBean;
 import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
@@ -39,4 +42,12 @@ public interface HttpService {
     @GET("category.php?api_version=1.0&act=search_category_goods_list&c_id=0&order_price=0&debug=true&client_id=&key=")
     Call<Product_List_Gson> openProductListGsonCall(@Query("page_num") int page_num, @Query("page") int page);
 
+    @GET("topic.php?act=info&debug=true&api_version=1.0")
+    Call<DetailsBean> queryDetailsData(@Query("topic_id")String topicID,@Query("user_id")String userID);
+
+    @GET("topic.php?act=remark_list&debug=true&api_version=1.0&from_id=0")
+    Call<CommentBean> queryCommentData(@Query("topic_id")String topicID,@Query("count")String count);
+
+    @GET("topic.php?act=related_topics&debug=true&api_version=1.0")
+    Call<RelativeTopicBean> queryRalativeTopicData(@Query("topic_id")String topicID);
 }

@@ -5,4 +5,11 @@
     <string name="show">晒吧</string>
     <string name="mine">我</string>
     <string name="watch_more">查看更多</string>
+    <string name="read_me">读我</string>
+    <string name="edit_hint">您说的每一句话话我们都很在乎</string>
+    <string name="send">发送</string>
+    <string name="purchase">立即购买</string>
+    <string name="shelves">已下架</string>
+    <string name="comment">评论</string>
+    <string name="empty_comment">美丽如你，不想发表一点想法嘛~</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.tianjun.projecttest.Adapter.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -17,7 +18,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
+import com.example.tianjun.projecttest.DetailActivity;
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.Util.ConstantClz;
+import com.example.tianjun.projecttest.Util.PublicMethod;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * Created by xx on 2016/9/6.
  */
-public class ListViewAdapter extends BaseAdapter{
+public class ListViewAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<ListBean.InfoBean> mListData;
     private LayoutInflater mInflater;
@@ -70,6 +74,10 @@ public class ListViewAdapter extends BaseAdapter{
         ListBean.InfoBean item = mListData.get(position);
 
         Picasso.with(mContext).load(item.getTopic_img()).into(holder.image);
+        holder.image.setTag(item.getTopic_id());
+        holder.image.setOnClickListener(this);
+
+
         holder.title.setText(item.getTitle());
         holder.keyWords.setText(getKeyWords(item.getKeywords()));
 
@@ -83,10 +91,21 @@ public class ListViewAdapter extends BaseAdapter{
             holder.goods.setAdapter(listItemGoodsAdapter);
 
             setMarginLeftForButton(goods_list.size(),holder.more);
+            holder.more.setTag(item.getTopic_id());
+            holder.more.setOnClickListener(this);
         }else {
             holder.splitLayout.setVisibility(View.GONE);
         }
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        String topicID = view.getTag().toString();
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.putExtra(ConstantClz.DETAIL_TOPIC_ID,topicID);
+        intent.putExtra(ConstantClz.USER_ID,"");
+        mContext.startActivity(intent);
     }
 
     class ViewHolder{
@@ -134,13 +153,13 @@ public class ListViewAdapter extends BaseAdapter{
      */
     private void setMarginLeftForButton(int count,Button moreBtn){
         viewWidth = count * 90 + 40;
-        viewWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, viewWidth, mContext.getResources().getDisplayMetrics());
+        viewWidth = PublicMethod.formatDIP(viewWidth,mContext);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) moreBtn.getLayoutParams();
         int marginLeft = 0;
         if (viewWidth<screenWidth){
             marginLeft = screenWidth - viewWidth;
         }else {
-            marginLeft = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, mContext.getResources().getDisplayMetrics());
+            marginLeft = PublicMethod.formatDIP(10,mContext);
         }
         layoutParams.setMargins(marginLeft,0,0,0);
         moreBtn.setLayoutParams(layoutParams);
