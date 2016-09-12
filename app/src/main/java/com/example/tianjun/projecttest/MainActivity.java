@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends CustomerAppCompatActivity {
     private List<Fragment> mFragmentList;
-//    @BindView(R.id.main_pager)
+    @BindView(R.id.main_pager)
     DontMoveViewPager mMainPager;
     @BindView(R.id.main_bottom_selector_home)
     RadioButton mHomeSelector;
@@ -38,7 +38,7 @@ public class MainActivity extends CustomerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mMainPager= (DontMoveViewPager) findViewById(R.id.main_pager);
+//        mMainPager= (DontMoveViewPager) findViewById(R.id.main_pager);
         init();
     }
 

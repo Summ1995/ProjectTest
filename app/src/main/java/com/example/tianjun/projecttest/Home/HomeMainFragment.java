@@ -67,19 +67,15 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     private ViewPager mHeadPager;
     private boolean hadHead = false;
     private boolean isBottom = false;
-    private LayoutInflater mInflater;
+    private int mTabScrollX;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         mHomePresent = new HomePresent(this);
-        mListData = new ArrayList<>();
         mListHeadData = new ArrayList<>();
-        mInflater = LayoutInflater.from(mContext);
-        mListHeadView = LayoutInflater.from(mContext).inflate(R.layout.home_list_head, null);
-        mHeadPager = (ViewPager) mListHeadView.findViewById(R.id.home_list_head_pager);
-
+        mListData = new ArrayList<>();
     }
 
     @Nullable
@@ -95,6 +91,9 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      * 初始化首页界面
      */
     private void initView() {
+        hadHead = false;
+        mListHeadView = LayoutInflater.from(mContext).inflate(R.layout.home_list_head, null);
+        mHeadPager = (ViewPager) mListHeadView.findViewById(R.id.home_list_head_pager);
         if (mTabBean == null){
             mHomePresent.requestTabData(ConstantClz.HOME_TAB_REQUEST_CODE);
         }else {
@@ -115,6 +114,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     }
 
     private void initTab(){
+        int position = 0;
         for (int i = 0; i < mTabBean.size() + 1; i++) {
             TabLayout.Tab tab = mHomeTab.newTab();
             if (i == mTabBean.size()){
@@ -123,14 +123,19 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
             }else {
                 tab.setText(mTabBean.get(i).getCat_name());
                 tab.setTag(mTabBean.get(i).getCat_id());
+                if (mCurrentCatId.equals(mTabBean.get(i).getCat_id())){
+                    position = i;
+                }
             }
             mHomeTab.addTab(tab);
         }
-
+        mHomeTab.getTabAt(position).select();
         mHomeTab.setOnTabSelectedListener(tabsClickListener);
     }
 
     private TabLayout.OnTabSelectedListener tabsClickListener = new TabLayout.OnTabSelectedListener() {
+
+
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             String catId = tab.getTag().toString();
@@ -139,6 +144,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
             }else if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE)){
                 tab.setIcon(R.drawable.arrow_red_up);
             }
+            mTabScrollX = mHomeTab.getScrollX();
             initList(catId);
         }
 
@@ -237,6 +243,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
             if (count == 10){
                 mHomeList.getRefreshableView().setSelectionAfterHeaderView();
             }
+            mHomeTab.scrollTo(mTabScrollX,0);
         }
     };
 
@@ -246,7 +253,8 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      */
     @Override
     public void getRequestListHeadBean(List<ListHeadBean.InfoBean.ItemsBean> bean) {
-        mListHeadData = bean;
+        mListHeadData.clear();
+        mListHeadData.addAll(bean);
         initListHead();
         mHomePresent.requestListData(count,0,ConstantClz.HOME_LIST_REQUEST_CODE);
         initHeadSign();
@@ -266,16 +274,10 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      * 初始化list的头部视图
      */
     private void initListHead(){
-        if (mListHeadAdapter != null){
-            mListHeadData.clear();
-            mListHeadData.addAll(mListHeadData);
-            mListHeadAdapter.notifyDataSetChanged();
-        }else {
+        mListHeadAdapter = new ListHeadAdapter(mListHeadData, mContext);
+        mHeadPager.setAdapter(mListHeadAdapter);
+        mHeadPager.addOnPageChangeListener(this);
 
-            mListHeadAdapter = new ListHeadAdapter(mListHeadData, mContext);
-            mHeadPager.setAdapter(mListHeadAdapter);
-            mHeadPager.addOnPageChangeListener(this);
-        }
         if (!hadHead){
             mHomeList.getRefreshableView().addHeaderView(mListHeadView);
             hadHead = true;
@@ -288,6 +290,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      */
     private void initHeadSign(){
         headSign = (LinearLayout) mListHeadView.findViewById(R.id.home_list_head_sign);
+        headSign.removeAllViews();
         for (int i = 0; i < mListHeadData.size(); i++) {
             headSign.addView(getSignImageView());
         }

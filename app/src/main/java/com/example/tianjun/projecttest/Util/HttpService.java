@@ -10,6 +10,7 @@ import com.example.tianjun.projecttest.Bean.Home.TabBean;
 import com.example.tianjun.projecttest.Bean.Product.Product_Head_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_List_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_Tab_Gson;
+import com.example.tianjun.projecttest.Bean.Welcome.WelcomeBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -50,4 +51,7 @@ public interface HttpService {
 
     @GET("topic.php?act=related_topics&debug=true&api_version=1.0")
     Call<RelativeTopicBean> queryRalativeTopicData(@Query("topic_id")String topicID);
+
+    @GET("tags.php?api_version=1.0&debug=true&act=banner&type=3")
+    Call<WelcomeBean> queryWelcomeData();
 }
