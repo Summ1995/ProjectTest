@@ -20,4 +20,6 @@ public class ConstantClz {
 
     public static final String DEFAULT_HTTP_IMAGE_URL = "http://img.fulishe.com/";
 
+    public static final int SHOW_CATEGORY_REQUEST_CODE = 8;
+    public static final int SHOW_LIST_REQUEST_CODE = 9;
 }

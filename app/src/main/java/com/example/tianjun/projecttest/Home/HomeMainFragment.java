@@ -30,6 +30,7 @@ import com.example.tianjun.projecttest.Bean.Home.TabBean;
 import com.example.tianjun.projecttest.Present.Home.HomePresent;
 import com.example.tianjun.projecttest.R;
 import com.example.tianjun.projecttest.Util.ConstantClz;
+import com.example.tianjun.projecttest.Util.PublicMethod;
 import com.example.tianjun.projecttest.View.Home.IHomeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -292,22 +293,10 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         headSign = (LinearLayout) mListHeadView.findViewById(R.id.home_list_head_sign);
         headSign.removeAllViews();
         for (int i = 0; i < mListHeadData.size(); i++) {
-            headSign.addView(getSignImageView());
+            headSign.addView(PublicMethod.getSignImageView(mContext));
         }
     }
 
-    /**
-     * 动态添加head的指示小球
-     * @return
-     */
-    private ImageView getSignImageView(){
-        ImageView imageView = new ImageView(mContext);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(20,20);
-        layoutParams.setMargins(10,0,0,0);
-        imageView.setLayoutParams(layoutParams);
-        imageView.setBackgroundResource(R.drawable.viewpager_changed_selector);
-        return imageView;
-    }
 
     /**
      * 控制listview的下拉刷新

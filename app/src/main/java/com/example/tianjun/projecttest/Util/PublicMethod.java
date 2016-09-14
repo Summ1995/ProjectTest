@@ -2,6 +2,10 @@ package com.example.tianjun.projecttest.Util;
 
 import android.content.Context;
 import android.util.TypedValue;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.example.tianjun.projecttest.R;
 
 /**
  * Created by xx on 2016/9/7.
@@ -15,5 +19,19 @@ public class PublicMethod {
         int screenWidth = context.getResources().getDisplayMetrics().widthPixels / 2;
         float mScale = screenWidth/Float.parseFloat(width);
         return mScale;
+    }
+
+
+    /**
+     * 动态添加head的指示小球
+     * @return
+     */
+    public static ImageView getSignImageView(Context context){
+        ImageView imageView = new ImageView(context);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(15,15);
+        layoutParams.setMargins(10,0,0,0);
+        imageView.setLayoutParams(layoutParams);
+        imageView.setBackgroundResource(R.drawable.viewpager_changed_selector);
+        return imageView;
     }
 }

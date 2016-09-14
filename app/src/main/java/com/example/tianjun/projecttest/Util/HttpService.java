@@ -54,4 +54,10 @@ public interface HttpService {
 
     @GET("tags.php?api_version=1.0&debug=true&act=banner&type=3")
     Call<WelcomeBean> queryWelcomeData();
+
+    @GET("share.php?api_version=1.0&act=category_list&debug=true")
+    Call<com.example.tianjun.projecttest.Bean.Show.CategoryBean> queryShowCategory();
+
+    @GET("share.php?act=share_list&debug=true&api_version=1.0&key=&from_id=&user_id=")
+    Call<com.example.tianjun.projecttest.Bean.Show.ListBean> queryShowList(@Query("category_id")String categoryID,@Query("count")String count);
 }

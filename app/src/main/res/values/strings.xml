@@ -12,4 +12,6 @@
     <string name="shelves">已下架</string>
     <string name="comment">评论</string>
     <string name="empty_comment">美丽如你，不想发表一点想法嘛~</string>
+    <string name="search_info">请输入关键字如:高跟鞋</string>
+    <string name="attention">+关注</string>
 </resources>
