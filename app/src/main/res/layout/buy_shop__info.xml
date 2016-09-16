@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tianjun.projecttest.Product.BuyShop_Info">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorToolBar">
+
+        <TextView
+            android:id="@+id/bar_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="你好"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bar"
+        android:fillViewport="true">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/title_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/shop_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/choosebackground" />
+
+                    <TextView
+                        android:id="@+id/title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/shop_img"
+                        android:layout_toRightOf="@id/shop_img"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="20sp"
+                        android:textColor="#333333" />
+
+                    <TextView
+                        android:id="@+id/title_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_alignBottom="@id/shop_img"
+                        android:layout_toRightOf="@id/shop_img" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/focus_tv"
+                            android:layout_width="60dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="关注"
+                            android:textColor="#ffffff"
+                            android:background="@color/colorTheme"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/shop_Info_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_rl"
+                    android:layout_margin="10dp"
+                    android:textColor="#444444" />
+
+                <fragment
+                    android:id="@+id/fragment1"
+                    android:name="com.example.tianjun.projecttest.Product.BuyShop_Info_Fragment1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/shop_Info_tv"
+                    android:padding="5dp" />
+
+                <fragment
+                    android:id="@+id/fragment2"
+                    android:name="com.example.tianjun.projecttest.Product.BuyShop_Info_Fragment2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/shop_Info_tv"
+                    android:padding="5dp" />
+
+            </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

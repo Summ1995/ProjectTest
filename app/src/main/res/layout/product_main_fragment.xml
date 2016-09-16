@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/bar"
+        android:background="@color/colorToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tab"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@color/colorTheme"
+            app:tabTextColor="#ffffff"
+            android:layout_gravity="center"/>
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/product_fra"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bar" />
+    <FrameLayout
+        android:id="@+id/buyshop_fra"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bar" />
+</RelativeLayout>

@@ -19,10 +19,12 @@ import java.util.List;
 public class Product_HeadViewPager extends PagerAdapter{
     private Context mContext;
     private List<Product_Head_Gson.InfoBean.ItemsBean> mViewPager_List;
+    private int windowWidth;
 
- public Product_HeadViewPager(Context mContext,List<Product_Head_Gson.InfoBean.ItemsBean> mViewPager_List){
+ public Product_HeadViewPager(Context mContext,List<Product_Head_Gson.InfoBean.ItemsBean> mViewPager_List,int windowWidth){
      this.mContext=mContext;
      this.mViewPager_List=mViewPager_List;
+     this.windowWidth=windowWidth;
  }
 
     @Override

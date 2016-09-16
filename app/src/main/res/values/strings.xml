@@ -12,6 +12,13 @@
     <string name="shelves">已下架</string>
     <string name="comment">评论</string>
     <string name="empty_comment">美丽如你，不想发表一点想法嘛~</string>
+    <string name="something_comment1">物流-多久能收到呀
+我们满世界的搜寻好货，为了商品的血统纯正，境外商品必须产地直销这点很重要，所以会需要2-4周的等待，有期待有盼望，收到的时候反而更有满足感呢。 我们更会准确清晰地完善商品小贴士，让关于等待的疑问都变成等待的喜悦。</string>
+    <string name="something_comment2">退换-收到了 和我想的不一样…
+不要因为颜色不好看、突然不喜欢等个人就轻易拒绝或着抛弃这些漂洋过海为你而来的海外商品，因为退货所产生的运费将由买家承担。</string>
+    <string name="something_comment3">疑问-有问题找客服
+对商品对订单有任何疑问吗，随时联络客服吧。我们会快速回应，有效率的提供帮助。</string>
+    <string name="invitation_info">1.好友使用你的邀请码成功注册福利社，你可获得1000积分，对方可获得30元福利券(订单满88元可用)；2.好友首次下单且交易成功，你可获得30元福利券(订单满88元可用)及1000积分；</string>
     <string name="search_info">请输入关键字如:高跟鞋</string>
     <string name="attention">+关注</string>
 </resources>
