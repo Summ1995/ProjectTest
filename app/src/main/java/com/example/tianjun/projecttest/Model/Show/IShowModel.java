@@ -8,5 +8,5 @@ import com.example.tianjun.projecttest.Present.Show.IShowPresent;
 public interface IShowModel {
     void getCategoryDataByHttpRequest(IShowPresent present,int requestCode);
 
-    void getListDataByHttpRequest(String categoryID,int count,IShowPresent present,int requestCode);
+    void getListDataByHttpRequest(String categoryID,int count,String key,IShowPresent present,int requestCode);
 }

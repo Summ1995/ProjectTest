@@ -59,5 +59,5 @@ public interface HttpService {
     Call<com.example.tianjun.projecttest.Bean.Show.CategoryBean> queryShowCategory();
 
     @GET("share.php?act=share_list&debug=true&api_version=1.0&key=&from_id=&user_id=")
-    Call<com.example.tianjun.projecttest.Bean.Show.ListBean> queryShowList(@Query("category_id")String categoryID,@Query("count")String count);
+    Call<com.example.tianjun.projecttest.Bean.Show.ListBean> queryShowList(@Query("category_id")String categoryID,@Query("count")String count,@Query("key")String key);
 }

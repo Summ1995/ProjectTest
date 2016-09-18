@@ -29,9 +29,9 @@ public class ShowModel implements IShowModel{
     }
 
     @Override
-    public void getListDataByHttpRequest(String categoryID, int count,final IShowPresent present,final int requestCode) {
+    public void getListDataByHttpRequest(String categoryID, int count,String key,final IShowPresent present,final int requestCode) {
         String strCount = String.valueOf(count);
-        HttpRequest.getHttpService().queryShowList(categoryID,strCount).enqueue(new Callback<ListBean>() {
+        HttpRequest.getHttpService().queryShowList(categoryID,strCount,key).enqueue(new Callback<ListBean>() {
             @Override
             public void onResponse(Call<ListBean> call, Response<ListBean> response) {
                 present.requestSuccess(response.body(),requestCode);

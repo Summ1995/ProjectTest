@@ -24,8 +24,8 @@ public class ShowPresent implements IShowPresent{
     }
 
     @Override
-    public void requestListData(String categoryID, int count, int requestCode) {
-        mShowModel.getListDataByHttpRequest(categoryID,count,this,requestCode);
+    public void requestListData(String categoryID, int count,String key, int requestCode) {
+        mShowModel.getListDataByHttpRequest(categoryID,count,key,this,requestCode);
     }
 
     @Override

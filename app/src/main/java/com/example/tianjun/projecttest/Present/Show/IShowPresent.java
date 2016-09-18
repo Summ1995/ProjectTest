@@ -6,7 +6,7 @@ package com.example.tianjun.projecttest.Present.Show;
 public interface IShowPresent {
     void requestCategoryData(int requestCode);
 
-    void requestListData(String categoryID,int count,int requestCode);
+    void requestListData(String categoryID,int count,String key,int requestCode);
 
     void requestSuccess(Object object,int requestCode);
 }
