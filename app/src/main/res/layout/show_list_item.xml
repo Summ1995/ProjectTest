@@ -45,7 +45,6 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/circle_gray_bk"
-
         android:alpha="0.3"
         android:layout_alignTop="@+id/show_item_image_pager"
         android:layout_alignParentRight="true"

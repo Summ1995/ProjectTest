@@ -4,10 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.tianjun.projecttest.Me.Me_Recommend_Info">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/recommend_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorToolBar">
+        <ImageView
+            android:id="@+id/recommend_back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邀请好友得好礼"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_below="@id/recommend_bar">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

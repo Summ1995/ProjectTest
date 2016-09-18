@@ -26,7 +26,7 @@ public class Me_Service_Info extends AppCompatActivity {
 
     @BindView(R.id.service_Info_list)
     PullToRefreshListView pullToRefreshListView;
-    @BindView(R.id.service_back_img)
+
     ImageView mService_back_img;
     private List<Custom_serviceInfo> custom_serviceInfos=new ArrayList<>();
     private Context mContext;
@@ -35,8 +35,8 @@ public class Me_Service_Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me__service__info);
         ButterKnife.bind(this);
+        mService_back_img= (ImageView) findViewById(R.id.service_back_img);
         mContext=this;
-
         ServiceListAdapter serviceListAdapter = new ServiceListAdapter();
         pullToRefreshListView.setAdapter(serviceListAdapter);
         mService_back_img.setOnClickListener(new View.OnClickListener() {

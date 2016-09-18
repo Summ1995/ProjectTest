@@ -2,6 +2,8 @@ package com.example.tianjun.projecttest.Me;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -42,13 +44,14 @@ public class Me_Fragment extends Fragment {
     RelativeLayout mAddress_rl;
     @BindView(R.id.service_info_rl)
     RelativeLayout mService_info_rl;
-//
-//    @BindView(R.id.user_head_img)
-//    ImageView mHead_img;
-//    @BindView(R.id.user_head_img)
-//    ImageView mHead_img;
-//    @BindView(R.id.user_head_img)
-//    ImageView mHead_img;
+
+    @BindView(R.id.service_tel_rl)
+    RelativeLayout mService_tel_rl;
+
+    @BindView(R.id.help_rl)
+    RelativeLayout mHelp_rl;
+    @BindView(R.id.set_rl)
+    RelativeLayout mSet_rl;
 //
 //    @BindView(R.id.user_head_img)
 //    ImageView mHead_img;
@@ -96,6 +99,10 @@ public class Me_Fragment extends Fragment {
         mShoucang_rl.setOnClickListener(clickListener);
         mInfo_set_rl.setOnClickListener(clickListener);
         mAddress_rl.setOnClickListener(clickListener);
+        mService_info_rl.setOnClickListener(clickListener);
+        mService_tel_rl.setOnClickListener(clickListener);
+        mHelp_rl.setOnClickListener(clickListener);
+        mSet_rl.setOnClickListener(clickListener);
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -133,6 +140,23 @@ public class Me_Fragment extends Fragment {
                     break;
                 case R.id.address_rl:
                     intent.setClass(mContext, Me_Address_Info.class);
+                    mContext.startActivity(intent);
+                    break;
+                case R.id.service_info_rl:
+                    intent.setClass(mContext, Me_Service_Info.class);
+                    mContext.startActivity(intent);
+                    break;
+                case R.id.service_tel_rl:
+                    Uri uri = Uri.parse("tel:021-52856131");
+                    Intent intent1 = new Intent(Intent.ACTION_DIAL, uri);
+                    startActivity(intent1);
+                    break;
+                case R.id.help_rl:
+                    intent.setClass(mContext, Me_Help.class);
+                    mContext.startActivity(intent);
+                    break;
+                case R.id.set_rl:
+                    intent.setClass(mContext, Me_Set.class);
                     mContext.startActivity(intent);
                     break;
             }

@@ -18,12 +18,11 @@
                 android:id="@+id/title_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@id/title_viewpager"
-                android:background="@drawable/viewpager_shape" />
+                android:background="@drawable/viewpager_shape"/>
 
             <!-- 标题部分-->
             <TextView
@@ -333,6 +332,17 @@
 
                 </GridLayout>
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/favorite_collection_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/share_collected_selector"
+                android:layout_alignTop="@+id/goods_english_name"
+                android:layout_alignRight="@+id/tags_icon_ll"
+                android:layout_alignEnd="@+id/tags_icon_ll"
+                android:layout_marginRight="92dp"
+                android:layout_marginEnd="92dp" />
         </RelativeLayout>
     </com.example.tianjun.projecttest.CustomerView.AlphaTitleScrollView>
 
@@ -419,7 +429,78 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#505050">
+        android:background="@color/colorToolBar">
+
+        <RelativeLayout
+            android:id="@+id/product_info_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:alpha="0.7"
+                android:background="@drawable/circle_share_bk" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/arrow_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <RelativeLayout
+                android:id="@+id/product_share_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:alpha="0.7"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circle_share_bk" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/share_nav"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/favorite_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/product_share_img"
+                android:layout_marginRight="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/collect_background"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:alpha="0.7"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_share_bk" />
+
+                <CheckBox
+                    android:id="@+id/show_item_collection_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/product_favorite_select"
+                    android:layout_margin="5dp"
+                    android:layout_alignTop="@+id/collect_background"
+                    android:layout_alignLeft="@+id/collect_background"
+                    android:layout_alignBottom="@+id/collect_background"
+                    android:layout_alignRight="@+id/collect_background"
+                    android:padding="10dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 </RelativeLayout>

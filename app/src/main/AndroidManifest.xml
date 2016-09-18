@@ -37,6 +37,11 @@
         <activity android:name=".Me.Me_Address_Info" />
         <activity android:name=".Me.Me_Address_Add" />
         <activity android:name=".Me.Me_Service_Info" />
+        <activity android:name=".Me.Me_Help" />
+        <activity android:name=".Me.Me_Set" />
+        <activity android:name=".Me.Me_SetPssWord" >
+        </activity>
+        <activity android:name=".Me.Me_Service_Info" />
         <activity android:name=".SearchHomeActivity" />
         <activity android:name=".SearchActivity"></activity>
     </application>

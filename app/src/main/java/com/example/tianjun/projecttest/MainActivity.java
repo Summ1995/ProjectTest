@@ -3,6 +3,9 @@ package com.example.tianjun.projecttest;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,13 +45,14 @@ public class MainActivity extends CustomerAppCompatActivity {
     RadioButton mMineSelecotr;
     private Context mContext;
     public MenuDrawer mMenuDrawer;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        mMainPager = (DontMoveViewPager) findViewById(R.id.main_pager);
         mContext = this;
         mMenuDrawer = MenuDrawer.attach(this, null, Position.LEFT, MenuDrawer.MENU_DRAG_WINDOW);
         mMenuDrawer.setContentView(R.layout.activity_main);
@@ -73,7 +77,14 @@ public class MainActivity extends CustomerAppCompatActivity {
         mFragmentList.add(Product_Main_Fragment.newInstance(width));
         mFragmentList.add(new ShowMainFragment());
         mFragmentList.add(Me_Fragment.newInstance());
-
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction().hide(mFragmentList.get(0))
+                .hide(mFragmentList.get(1)).hide(mFragmentList.get(2)).hide(mFragmentList.get(3));
+        fragmentTransaction.replace(R.id.main_pager1,mFragmentList.get(0));
+        fragmentTransaction.replace(R.id.main_pager2,mFragmentList.get(1));
+        fragmentTransaction.replace(R.id.main_pager3,mFragmentList.get(2));
+        fragmentTransaction.replace(R.id.main_pager4,mFragmentList.get(3));
+        fragmentTransaction.show(mFragmentList.get(0)).commit();
 
     }
 
@@ -82,7 +93,7 @@ public class MainActivity extends CustomerAppCompatActivity {
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.setScrollDuration(0);
         scroller.initViewPagerScroll(mMainPager);
-        mMainPager.setAdapter(mainPagerAdapter);
+//        mMainPager.setAdapter(mainPagerAdapter);
 
 
 
@@ -90,29 +101,35 @@ public class MainActivity extends CustomerAppCompatActivity {
 
     public void onClick(View view){
         int id = view.getId();
+        fragmentTransaction = fragmentManager.beginTransaction().hide(mFragmentList.get(0))
+                .hide(mFragmentList.get(1)).hide(mFragmentList.get(2)).hide(mFragmentList.get(3));
         switch (id){
             case R.id.main_bottom_selector_home:
                 setSelectorUnChecked();
                 mHomeSelector.setChecked(true);
-                mMainPager.setCurrentItem(0);
+//                mMainPager.setCurrentItem(0);
+                fragmentTransaction.show(mFragmentList.get(0)).commit();
                 mMenuDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
                 break;
             case R.id.main_bottom_selector_goods:
                 setSelectorUnChecked();
                 mGoodsSelector.setChecked(true);
-                mMainPager.setCurrentItem(1);
+//                mMainPager.setCurrentItem(1);
+                fragmentTransaction.show(mFragmentList.get(1)).commit();
                 mMenuDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
                 break;
             case R.id.main_bottom_selector_show:
                 setSelectorUnChecked();
                 mShowSelector.setChecked(true);
-                mMainPager.setCurrentItem(2);
+//                mMainPager.setCurrentItem(2);
+                fragmentTransaction.show(mFragmentList.get(2)).commit();
                 mMenuDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_FULLSCREEN);
                 break;
             case R.id.main_bottom_selector_mine:
                 setSelectorUnChecked();
                 mMineSelecotr.setChecked(true);
-                mMainPager.setCurrentItem(3);
+//                mMainPager.setCurrentItem(3);
+                fragmentTransaction.show(mFragmentList.get(3)).commit();
                 mMenuDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_NONE);
                 break;
             case R.id.main_bottom_selector_customer_show:
