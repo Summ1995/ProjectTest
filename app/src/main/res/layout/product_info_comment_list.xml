@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/myviewtitlebk_default" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:id="@+id/me_user_name_tv"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="dasdadadadadasdasd"/>
+            <TextView
+                android:id="@+id/comment_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="dasdadasdauh akjhak akjak klkakljfhasdkjskljfhskljfhaskjfhsafkjhasldfkjhadfkhaslkfjasldfhsakdfjhslkjdfhalksjfasfasdfdfsadf"/>
+        </LinearLayout>
+    </LinearLayout>
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#d3d3d3"/>
+</LinearLayout>
