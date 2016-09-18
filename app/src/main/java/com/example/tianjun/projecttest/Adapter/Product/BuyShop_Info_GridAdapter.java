@@ -115,8 +115,8 @@ public class BuyShop_Info_GridAdapter extends BaseAdapter {
             mTitle_img = (ImageView) view.findViewById(R.id.title_img);
             mBrand_tv = (TextView) view.findViewById(R.id.brand_tv);
             mProductname_tv = (TextView) view.findViewById(R.id.productname_tv);
-            mNowprice_tv = (TextView) view.findViewById(R.id.nowprice_tv);
-            mOldprice_tv = (TextView) view.findViewById(R.id.oldprice_tv);
+            mNowprice_tv = (TextView) view.findViewById(R.id.buyshop_nowprice_tv);
+            mOldprice_tv = (TextView) view.findViewById(R.id.buyshop_oldprice_tv);
             mHeart_cheak= (CheckBox) view.findViewById(R.id.heart_check);
             mClick_layou= (LinearLayout) view.findViewById(R.id.click_layou);
         }

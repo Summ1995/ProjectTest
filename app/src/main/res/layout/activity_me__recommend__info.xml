@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
-            android:id="@+id/head_background"
+            android:id="@+id/head_background_rl"
             android:layout_width="match_parent"
             android:layout_height="360dp"
             android:background="@drawable/invite_bk">
@@ -46,7 +46,7 @@
         <LinearLayout
             android:id="@+id/invitation_code"
             android:orientation="horizontal"
-            android:layout_below="@id/head_background"
+            android:layout_below="@id/head_background_rl"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
             android:layout_width="wrap_content"
@@ -59,12 +59,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/head_background"
                 android:text="FLS431974"
                 android:textColor="@color/colorTheme"/>
         </LinearLayout>
         <RelativeLayout
-            android:id="@+id/share_rl"
+            android:id="@+id/share_info_rl"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -98,7 +97,7 @@
             android:id="@+id/QQ_ll"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_below="@id/share_rl"
+            android:layout_below="@id/share_info_rl"
             android:layout_height="40dp">
             <ImageView
                 android:id="@+id/wechat"
@@ -165,8 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="邀请好友排行榜"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"

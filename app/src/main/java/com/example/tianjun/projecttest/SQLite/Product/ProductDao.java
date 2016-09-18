@@ -27,6 +27,7 @@ public class ProductDao extends AbstractDao<Product, Long> {
         public final static Property Goods_english_name = new Property(2, String.class, "goods_english_name", false, "GOODS_ENGLISH_NAME");
         public final static Property Goods_name = new Property(3, String.class, "goods_name", false, "GOODS_NAME");
         public final static Property Shop_price = new Property(4, String.class, "shop_price", false, "SHOP_PRICE");
+        public final static Property Thumb = new Property(5, String.class, "thumb", false, "THUMB");
     }
 
 
@@ -46,7 +47,8 @@ public class ProductDao extends AbstractDao<Product, Long> {
                 "\"GOODS_ID\" TEXT," + // 1: goods_id
                 "\"GOODS_ENGLISH_NAME\" TEXT," + // 2: goods_english_name
                 "\"GOODS_NAME\" TEXT," + // 3: goods_name
-                "\"SHOP_PRICE\" TEXT);"); // 4: shop_price
+                "\"SHOP_PRICE\" TEXT," + // 4: shop_price
+                "\"THUMB\" TEXT);"); // 5: thumb
     }
 
     /** Drops the underlying database table. */
@@ -83,6 +85,11 @@ public class ProductDao extends AbstractDao<Product, Long> {
         if (shop_price != null) {
             stmt.bindString(5, shop_price);
         }
+ 
+        String thumb = entity.getThumb();
+        if (thumb != null) {
+            stmt.bindString(6, thumb);
+        }
     }
 
     @Override
@@ -113,6 +120,11 @@ public class ProductDao extends AbstractDao<Product, Long> {
         if (shop_price != null) {
             stmt.bindString(5, shop_price);
         }
+ 
+        String thumb = entity.getThumb();
+        if (thumb != null) {
+            stmt.bindString(6, thumb);
+        }
     }
 
     @Override
@@ -127,7 +139,8 @@ public class ProductDao extends AbstractDao<Product, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // goods_id
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // goods_english_name
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // goods_name
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // shop_price
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // shop_price
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // thumb
         );
         return entity;
     }
@@ -139,6 +152,7 @@ public class ProductDao extends AbstractDao<Product, Long> {
         entity.setGoods_english_name(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setGoods_name(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setShop_price(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setThumb(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }
     
     @Override

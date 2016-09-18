@@ -1,12 +1,8 @@
 package com.example.tianjun.projecttest;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;

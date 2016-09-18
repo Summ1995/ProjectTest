@@ -13,6 +13,7 @@ public class MyClass {
         product();
         choiceness();
         baskbar();
+        custom_serviceInfo();
     }
 
     private static void baskbar() {
@@ -27,7 +28,7 @@ public class MyClass {
         baskbar.addStringProperty("nick_name");
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,7 +44,7 @@ public class MyClass {
         choiceness.addStringProperty("title");
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,9 +60,10 @@ public class MyClass {
         product.addStringProperty("goods_english_name");
         product.addStringProperty("goods_name");
         product.addStringProperty("shop_price");
+        product.addStringProperty("thumb");
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +81,7 @@ public class MyClass {
         userInfo.addStringProperty("email");
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,7 +101,7 @@ public class MyClass {
         addressInfo.addBooleanProperty("default");
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,7 +120,26 @@ public class MyClass {
 
         //自动生成
         try {
-            new DaoGenerator().generateAll(schema,"D:/AndroidDemo3/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void custom_serviceInfo() {
+        Schema schema = new Schema("custom_serviceInfo",1,"com.example.tianjun.projecttest.SQLite.Custom_serviceInfo");
+        //添加购物车表
+        Entity shoppingcar = schema.addEntity("Custom_serviceInfo");
+        shoppingcar.addIdProperty().autoincrement();
+        shoppingcar.addStringProperty("msg_id");
+        shoppingcar.addStringProperty("msg_content");
+        shoppingcar.addStringProperty("msg_time");
+        shoppingcar.addStringProperty("user_name");
+        shoppingcar.addStringProperty("avatar");
+
+        //自动生成
+        try {
+            new DaoGenerator().generateAll(schema,"D:/AndroidDemo2/ProjectTest/app/src/main/java/com/example/tianjun/projecttest/SQLite");
         } catch (Exception e) {
             e.printStackTrace();
         }

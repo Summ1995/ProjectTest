@@ -30,7 +30,13 @@
         <activity android:name=".Me.Me_Info_Config" />
         <activity android:name=".Me.Me_Indent_Info" />
         <activity android:name=".Me.Me_Recommend_Info" />
-        <activity android:name=".Me.Me_Invite_details"></activity>
+        <activity android:name=".Me.Me_Invite_details" />
+        <activity android:name=".Me.Me_StampsInfo" />
+        <activity android:name=".Me.Me_Integral" />
+        <activity android:name=".Me.Me_Collect" />
+        <activity android:name=".Me.Me_Address_Info" />
+        <activity android:name=".Me.Me_Address_Add" />
+        <activity android:name=".Me.Me_Service_Info"></activity>
     </application>
 
 </manifest>

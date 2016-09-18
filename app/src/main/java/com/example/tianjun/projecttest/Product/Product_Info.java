@@ -278,7 +278,7 @@ public class Product_Info extends AppCompatActivity {
             for (int i = 0; i < mInfo.getComments().size(); i++) {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.product_info_comment_list, null);
                 mCircleImageView = (CircleImageView) view.findViewById(R.id.profile_image);
-                mUser_name_tv = (TextView) view.findViewById(R.id.user_name_tv);
+                mUser_name_tv = (TextView) view.findViewById(R.id.me_user_name_tv);
                 mComment_info_tv = (TextView) view.findViewById(R.id.comment_info_tv);
 
                 mComment_info_tv.setText(mInfo.getComments().get(i).getContent());

@@ -15,6 +15,7 @@ public class Product {
     private String goods_english_name;
     private String goods_name;
     private String shop_price;
+    private String thumb;
 
     @Generated
     public Product() {
@@ -25,12 +26,13 @@ public class Product {
     }
 
     @Generated
-    public Product(Long id, String goods_id, String goods_english_name, String goods_name, String shop_price) {
+    public Product(Long id, String goods_id, String goods_english_name, String goods_name, String shop_price, String thumb) {
         this.id = id;
         this.goods_id = goods_id;
         this.goods_english_name = goods_english_name;
         this.goods_name = goods_name;
         this.shop_price = shop_price;
+        this.thumb = thumb;
     }
 
     public Long getId() {
@@ -71,6 +73,14 @@ public class Product {
 
     public void setShop_price(String shop_price) {
         this.shop_price = shop_price;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 
 }
