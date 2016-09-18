@@ -5,5 +5,4 @@ package com.example.tianjun.projecttest.SQLite;
  */
 public class DbService {
 
-
 }
