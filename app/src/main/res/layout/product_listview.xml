@@ -17,7 +17,7 @@
             android:id="@+id/title_img"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="250dp" />
 
         <TextView
             android:id="@+id/brand_tv"
@@ -43,12 +43,14 @@
                 android:layout_toRightOf="@id/nowprice_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/heart_img"
+            <CheckBox
+                android:id="@+id/heart_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/product_collection_selector"/>
+                android:layout_marginRight="5dp"
+                android:button="@null"
+                android:drawableRight="@drawable/product_collection_selector"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -66,7 +68,7 @@
             android:id="@+id/title_img2"
             android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="250dp" />
 
         <TextView
             android:id="@+id/brand_tv2"
@@ -92,12 +94,14 @@
                 android:layout_toRightOf="@id/nowprice_tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/heart_img2"
+            <CheckBox
+                android:id="@+id/heart_check2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/product_collection_selector"/>
+                android:layout_marginRight="5dp"
+                android:button="@null"
+                android:drawableRight="@drawable/product_collection_selector"/>
         </RelativeLayout>
     </LinearLayout>
 

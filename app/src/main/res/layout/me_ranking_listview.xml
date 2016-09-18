@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/default_avatar"/>
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="asdada"
+        android:layout_toRightOf="@id/circleImageView"
+        android:layout_alignTop="@id/circleImageView"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"
+        android:textColor="#333333"/>
+
+    <TextView
+        android:id="@+id/ranking_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/circleImageView"
+        android:layout_marginBottom="2dp"
+        android:layout_toRightOf="@id/circleImageView"
+        android:text="dasda"
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorTheme"
+        android:textSize="20sp"
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@id/ranking_tv"
+        android:text="No.1"/>
+</RelativeLayout>
