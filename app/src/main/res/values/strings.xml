@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjectTest</string>
+    <string name="app_name">福利社</string>
     <string name="home">首页</string>
     <string name="goods">单品</string>
     <string name="show">晒吧</string>
@@ -19,6 +19,10 @@
     <string name="something_comment3">疑问-有问题找客服
 对商品对订单有任何疑问吗，随时联络客服吧。我们会快速回应，有效率的提供帮助。</string>
     <string name="invitation_info">1.好友使用你的邀请码成功注册福利社，你可获得1000积分，对方可获得30元福利券(订单满88元可用)；2.好友首次下单且交易成功，你可获得30元福利券(订单满88元可用)及1000积分；</string>
-    <string name="search_info">请输入关键字如:高跟鞋</string>
+    <string name="show_search_info">请输入关键字如:高跟鞋</string>
     <string name="attention">+关注</string>
+    <string name="search_info_hint">搜索专题或者单品</string>
+    <string name="search_text">搜索</string>
+    <string name="cancel_text">取消</string>
+    <string name="hot_search_text">热门搜索</string>
 </resources>

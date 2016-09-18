@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/searchicon"
             android:background="@drawable/mm_edit_normal"
-            android:hint="@string/search_info"
+            android:hint="@string/show_search_info"
             android:gravity="center_vertical"
             android:singleLine="true"
             android:drawablePadding="3dp"

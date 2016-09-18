@@ -1,11 +1,14 @@
 package com.example.tianjun.projecttest.Util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.SearchActivity;
 
 /**
  * Created by xx on 2016/9/7.
@@ -33,5 +36,11 @@ public class PublicMethod {
         imageView.setLayoutParams(layoutParams);
         imageView.setBackgroundResource(R.drawable.viewpager_changed_selector);
         return imageView;
+    }
+
+    public static  void goToSearch(Context context,String strKey){
+        Intent intent = new Intent(context, SearchActivity.class);
+        intent.putExtra(ConstantClz.SEARCH_KEY,strKey);
+        context.startActivity(intent);
     }
 }

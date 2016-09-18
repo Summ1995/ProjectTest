@@ -1,6 +1,7 @@
 package com.example.tianjun.projecttest.Adapter.Detail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.tianjun.projecttest.Bean.Detail.DetailsBean;
+import com.example.tianjun.projecttest.Product.Product_Info;
 import com.example.tianjun.projecttest.R;
 import com.example.tianjun.projecttest.Util.PublicMethod;
 import com.squareup.picasso.Picasso;
@@ -61,7 +63,7 @@ public class DetailsAdapter extends BaseAdapter{
         }else {
             holder = (ViewHolder) view.getTag();
         }
-        DetailsBean.InfoBean.DetailBean itemData = mDetailItemData.get(position);
+        final DetailsBean.InfoBean.DetailBean itemData = mDetailItemData.get(position);
 
         if (itemData.getGoods_id().equals("0")){
             holder.nameRL.setVisibility(View.GONE);
@@ -97,6 +99,14 @@ public class DetailsAdapter extends BaseAdapter{
                 holder.shelvesBtn.setVisibility(View.VISIBLE);
             }else {
                 holder.puchaseBtn.setVisibility(View.VISIBLE);
+                holder.puchaseBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext, Product_Info.class);
+                        intent.putExtra("goods_id",itemData.getGoods_id());
+                        mContext.startActivity(intent);
+                    }
+                });
                 holder.shelvesBtn.setVisibility(View.GONE);
             }
         }

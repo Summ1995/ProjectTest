@@ -12,6 +12,7 @@ public class ConstantClz {
     public static final String DETAIL_TOPIC_ID = "topicID";
     public static final String DETAIL_CAT_ID = "catID";
     public static final String USER_ID = "userID";
+    public static final String SEARCH_KEY = "searchKey";
 
 
     public static final int DETAIL_REQUEST_CODE = 5;

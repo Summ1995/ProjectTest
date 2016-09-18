@@ -46,7 +46,7 @@ public class HomeDetailActivity extends AppCompatActivity implements IHomeView,P
         mHomeDetailList.setOnRefreshListener(this);
         mHomeDetailList.setOnScrollListener(this);
 
-        mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),ConstantClz.HOME_LIST_REQUEST_CODE);
+        mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),"",ConstantClz.HOME_LIST_REQUEST_CODE);
     }
 
     private void loadData() {
@@ -73,7 +73,7 @@ public class HomeDetailActivity extends AppCompatActivity implements IHomeView,P
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
         mCurrentCount = 10;
-        mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),ConstantClz.HOME_LIST_REQUEST_CODE);
+        mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),"",ConstantClz.HOME_LIST_REQUEST_CODE);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class HomeDetailActivity extends AppCompatActivity implements IHomeView,P
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == 0 && isBottom == true){
             mCurrentCount += 10;
-            mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),ConstantClz.HOME_LIST_REQUEST_CODE);
+            mHomePresent.requestListData(mCurrentCount,Integer.parseInt(mCatID),"",ConstantClz.HOME_LIST_REQUEST_CODE);
         }
     }
 

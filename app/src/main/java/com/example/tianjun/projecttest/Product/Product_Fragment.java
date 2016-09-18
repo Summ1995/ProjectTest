@@ -53,7 +53,6 @@ import retrofit2.Response;
  * Created by vcc on 2016/9/8.
  */
 public class Product_Fragment extends Fragment {
-
     @BindView(R.id.product_tab_menu)
     TabLayout mTabLayout;
     @BindView(R.id.product_resfreshlistview)
@@ -120,6 +119,7 @@ public class Product_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContext = getContext();
         Bundle bundle = getArguments();
+        infoBean = new Product_Type_Gson.InfoBean();
         if (bundle != null) {
             windowWidth = bundle.getInt("windowWidth");
         }

@@ -36,7 +36,9 @@
         <activity android:name=".Me.Me_Collect" />
         <activity android:name=".Me.Me_Address_Info" />
         <activity android:name=".Me.Me_Address_Add" />
-        <activity android:name=".Me.Me_Service_Info"></activity>
+        <activity android:name=".Me.Me_Service_Info" />
+        <activity android:name=".SearchHomeActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

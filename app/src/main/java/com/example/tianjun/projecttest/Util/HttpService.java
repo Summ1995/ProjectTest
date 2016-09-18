@@ -20,6 +20,7 @@ import com.example.tianjun.projecttest.Bean.Product.Product_Info_ReadMe_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_List_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_Tab_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_Type_Gson;
+import com.example.tianjun.projecttest.Bean.SearchItemBean;
 import com.example.tianjun.projecttest.Bean.Welcome.WelcomeBean;
 
 import retrofit2.Call;
@@ -34,17 +35,14 @@ public interface HttpService {
     @GET("tags.php?act=hot_topic_category&debug=true&api_version=1.0")
     Call<TabBean> queryHomeTabData();
 
-    @GET("topic.php?act=list&debug=true&api_version=1.0&from_id=0&key=")
-    Call<ListBean> queryHomeListData(@Query("count")int count,@Query("c_id")int id);
+    @GET("topic.php?act=list&debug=true&api_version=1.0&from_id=0")
+    Call<ListBean> queryHomeListData(@Query("count")int count,@Query("c_id")String id,@Query("key")String key);
 
     @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
     Call<ListHeadBean> queryHomeListHeadData();
 
     @GET("topic.php?act=topic_cate&debug=true&api_version=1.0")
     Call<CategoryBean> queryHomeCategoryData();
-
-    @GET("tags.php?api_version=1.0&debug=true&act=banner&type=2")
-    Call<ListHeadBean> queryHomeListHeadData11();
 
     @GET("tags.php?act=hot_goods_category&debug=true&api_version=1.0")
     Call<Product_Tab_Gson> openProductTabGsonCall();
@@ -103,4 +101,10 @@ public interface HttpService {
 
     @GET("share.php?act=share_list&debug=true&api_version=1.0&key=&from_id=&user_id=")
     Call<com.example.tianjun.projecttest.Bean.Show.ListBean> queryShowList(@Query("category_id")String categoryID,@Query("count")String count,@Query("key")String key);
+
+    @GET("tags.php?act=hot_topic_keywords&debug=true&api_version=1.0")
+    Call<SearchItemBean> querySearchItem();
+
+    @GET("category.php?api_version=1.0&act=search_category_goods_list&c_id=&order_price=0&page_num=20&debug=true&client_id=")
+    Call<Product_GridInfo_Gson> querySearchGoods(@Query("page")String page,@Query("key")String key);
 }

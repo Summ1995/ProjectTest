@@ -126,5 +126,4 @@ public class MainActivity extends CustomerAppCompatActivity {
         mShowSelector.setChecked(false);
         mMineSelecotr.setChecked(false);
     }
-
 }

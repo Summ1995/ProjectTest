@@ -26,8 +26,8 @@ public class HomePresent implements IHomePresent{
     }
 
     @Override
-    public void requestListData(int count, int id, int requestCode) {
-        mHomeModel.RequestListData(count,id,this,requestCode);
+    public void requestListData(int count, int id,String key, int requestCode) {
+        mHomeModel.RequestListData(count,id,key,this,requestCode);
     }
 
     @Override

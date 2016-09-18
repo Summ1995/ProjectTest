@@ -1,6 +1,7 @@
 package com.example.tianjun.projecttest.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +30,7 @@ import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
 import com.example.tianjun.projecttest.Present.Home.HomePresent;
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.SearchHomeActivity;
 import com.example.tianjun.projecttest.Util.ConstantClz;
 import com.example.tianjun.projecttest.Util.PublicMethod;
 import com.example.tianjun.projecttest.View.Home.IHomeView;
@@ -53,6 +55,8 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     RelativeLayout mCategoryRL;
     @BindView(R.id.home_category_scroll)
     ScrollView mCategorySV;
+    @BindView(R.id.home_search)
+    ImageView mSearchImg;
 
     private static List<TabBean.InfoBean> mTabBean;
     private Context mContext;
@@ -84,6 +88,13 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment,container,false);
         ButterKnife.bind(this,view);
+        mSearchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SearchHomeActivity.class);
+                startActivity(intent);
+            }
+        });
         initView();
         return view;
     }
@@ -221,7 +232,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         }else {
             mHomeList.getRefreshableView().removeHeaderView(mListHeadView);
             hadHead = false;
-            mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),ConstantClz.HOME_LIST_REQUEST_CODE);
+            mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),"",ConstantClz.HOME_LIST_REQUEST_CODE);
         }
     }
 
@@ -257,7 +268,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
         mListHeadData.clear();
         mListHeadData.addAll(bean);
         initListHead();
-        mHomePresent.requestListData(count,0,ConstantClz.HOME_LIST_REQUEST_CODE);
+        mHomePresent.requestListData(count,0,"",ConstantClz.HOME_LIST_REQUEST_CODE);
         initHeadSign();
         setSignLightByIndex(0);
     }
@@ -305,7 +316,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
         count = 10;
-        mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),ConstantClz.HOME_LIST_REQUEST_CODE);
+        mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),"",ConstantClz.HOME_LIST_REQUEST_CODE);
     }
 
     @Override
@@ -317,7 +328,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == 0 && isBottom == true){
             count += 10;
-            mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),ConstantClz.HOME_LIST_REQUEST_CODE);
+            mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),"",ConstantClz.HOME_LIST_REQUEST_CODE);
         }
     }
 

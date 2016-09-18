@@ -33,8 +33,9 @@ public class HomeModel implements IHomeModel{
     }
 
     @Override
-    public void RequestListData(int count, int id,final IHomePresent callBack,final int requestCode) {
-        HttpRequest.getHttpService().queryHomeListData(count,id).enqueue(new Callback<ListBean>() {
+    public void RequestListData(int count, int id,String key,final IHomePresent callBack,final int requestCode) {
+        String strID = String.valueOf(id);
+        HttpRequest.getHttpService().queryHomeListData(count,strID,key).enqueue(new Callback<ListBean>() {
             @Override
             public void onResponse(Call<ListBean> call, Response<ListBean> response) {
                 callBack.httpRequestSuccess(response.body(),requestCode);

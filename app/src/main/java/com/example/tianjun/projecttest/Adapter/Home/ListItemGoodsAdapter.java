@@ -1,6 +1,7 @@
 package com.example.tianjun.projecttest.Adapter.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
+import com.example.tianjun.projecttest.Product.Product_Info;
 import com.example.tianjun.projecttest.R;
 import com.squareup.picasso.Picasso;
 
@@ -40,10 +42,19 @@ public class ListItemGoodsAdapter extends RecyclerView.Adapter<ListItemGoodsAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ListBean.InfoBean.GoodsListBean goodData = mGoodsList.get(position);
+        final ListBean.InfoBean.GoodsListBean goodData = mGoodsList.get(position);
         Picasso.with(mContext).load(goodData.getImage_path()).into(holder.image);
         holder.name.setText(goodData.getGoods_name());
         holder.currentPrice.setText(goodData.getCurrency_price());
+
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Product_Info.class);
+                intent.putExtra("goods_id",goodData.getGoods_id());
+                mContext.startActivity(intent);
+            }
+        });
 
         if (goodData.getIs_promote().equals("1")){
             holder.currentPrice.setText(goodData.getRank_price());
