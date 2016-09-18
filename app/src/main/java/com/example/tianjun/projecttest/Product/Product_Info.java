@@ -105,8 +105,8 @@ public class Product_Info extends AppCompatActivity {
     GridLayout mSomething_grid;
 
 
-    @BindView(R.id.bar)
-    Toolbar toolbar;
+    @BindView(R.id.product_info_bar)
+    Toolbar product_toolbar;
     @BindView(R.id.scroll)
     AlphaTitleScrollView alphaTitleScrollView;
 
@@ -142,8 +142,8 @@ public class Product_Info extends AppCompatActivity {
             }
         });
 
-        alphaTitleScrollView.setTitleAndHead(toolbar, mViewPager);
-        toolbar.getBackground().setAlpha(0);
+        alphaTitleScrollView.setTitleAndHead(product_toolbar, mViewPager);
+        product_toolbar.getBackground().setAlpha(0);
         initData();
     }
 

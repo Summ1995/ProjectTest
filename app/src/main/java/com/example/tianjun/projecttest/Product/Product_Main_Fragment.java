@@ -1,5 +1,6 @@
 package com.example.tianjun.projecttest.Product;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.SearchHomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Product_Main_Fragment extends Fragment {
     ImageView search_img;
     @BindView(R.id.main_tab)
     TabLayout mMain_tab;
+    private Context mContext;
 
     public static Product_Main_Fragment newInstance(int width) {
         Product_Main_Fragment product_main_fragment = new Product_Main_Fragment();
@@ -43,6 +46,12 @@ public class Product_Main_Fragment extends Fragment {
         bundle.putInt("windowWidth", width);
         product_main_fragment.setArguments(bundle);
         return product_main_fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext=getContext();
     }
 
     @Nullable
@@ -56,7 +65,9 @@ public class Product_Main_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent();
-//                intent.setClass(this,);
+                intent.setClass(mContext, SearchHomeActivity.class);
+                mContext.startActivity(intent);
+
             }
         });
 

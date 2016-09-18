@@ -84,7 +84,6 @@ public class MainActivity extends CustomerAppCompatActivity {
         fragmentTransaction.replace(R.id.main_pager2,mFragmentList.get(1));
         fragmentTransaction.replace(R.id.main_pager3,mFragmentList.get(2));
         fragmentTransaction.replace(R.id.main_pager4,mFragmentList.get(3));
-        fragmentTransaction.show(mFragmentList.get(0)).commit();
 
     }
 
@@ -92,11 +91,9 @@ public class MainActivity extends CustomerAppCompatActivity {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), mFragmentList);
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.setScrollDuration(0);
+        fragmentTransaction.show(mFragmentList.get(0)).commit();
         scroller.initViewPagerScroll(mMainPager);
 //        mMainPager.setAdapter(mainPagerAdapter);
-
-
-
     }
 
     public void onClick(View view){

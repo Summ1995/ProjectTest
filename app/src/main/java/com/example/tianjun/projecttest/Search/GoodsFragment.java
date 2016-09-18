@@ -33,16 +33,18 @@ public class GoodsFragment extends RefreshFragment implements PullToRefreshBase.
     private PullToRefreshGridView mSearchGoods;
     private String mKey;
     private Context mContext;
+    private int mWidth;
     private List<Product_GridInfo_Gson.InfoBean.GoodsBean> mGoodsList;
     private GridInfo_GridViewAdapter mSearchGoodsAdapter;
     private int mPage = 1;
 
-    public static GoodsFragment newInstance(String key){
-        return new GoodsFragment(key);
+    public static GoodsFragment newInstance(String key,int width){
+        return new GoodsFragment(key,width);
     }
 
-    private GoodsFragment(String key){
+    private GoodsFragment(String key,int width){
         mKey = key;
+        mWidth=width;
     }
 
     public GoodsFragment(){}
@@ -64,7 +66,8 @@ public class GoodsFragment extends RefreshFragment implements PullToRefreshBase.
     }
 
     private void initView() {
-        mSearchGoodsAdapter = new GridInfo_GridViewAdapter(mContext,mGoodsList);
+
+        mSearchGoodsAdapter = new GridInfo_GridViewAdapter(mContext,mGoodsList,mWidth);
         mSearchGoods.setAdapter(mSearchGoodsAdapter);
         mSearchGoods.setMode(PullToRefreshBase.Mode.BOTH);
         mSearchGoods.setOnRefreshListener(this);
