@@ -28,6 +28,7 @@ import com.example.tianjun.projecttest.Bean.Home.CategoryBean;
 import com.example.tianjun.projecttest.Bean.Home.ListBean;
 import com.example.tianjun.projecttest.Bean.Home.ListHeadBean;
 import com.example.tianjun.projecttest.Bean.Home.TabBean;
+import com.example.tianjun.projecttest.MainActivity;
 import com.example.tianjun.projecttest.Present.Home.HomePresent;
 import com.example.tianjun.projecttest.R;
 import com.example.tianjun.projecttest.SearchHomeActivity;
@@ -73,11 +74,13 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     private boolean hadHead = false;
     private boolean isBottom = false;
     private int mTabScrollX;
+    private MainActivity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getContext();
+        mActivity = (MainActivity)getActivity();
         mHomePresent = new HomePresent(this);
         mListHeadData = new ArrayList<>();
         mListData = new ArrayList<>();
@@ -86,6 +89,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mActivity.startLoadImage();
         View view = inflater.inflate(R.layout.home_fragment,container,false);
         ButterKnife.bind(this,view);
         mSearchImg.setOnClickListener(new View.OnClickListener() {
@@ -256,6 +260,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
                 mHomeList.getRefreshableView().setSelectionAfterHeaderView();
             }
             mHomeTab.scrollTo(mTabScrollX,0);
+            mActivity.stopLoadImage();
         }
     };
 
@@ -315,6 +320,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
      */
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
+        mActivity.startLoadImage();
         count = 10;
         mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),"",ConstantClz.HOME_LIST_REQUEST_CODE);
     }
@@ -327,6 +333,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == 0 && isBottom == true){
+            mActivity.startLoadImage();
             count += 10;
             mHomePresent.requestListData(count,Integer.parseInt(mCurrentCatId),"",ConstantClz.HOME_LIST_REQUEST_CODE);
         }

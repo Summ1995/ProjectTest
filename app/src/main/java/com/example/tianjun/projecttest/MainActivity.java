@@ -1,11 +1,13 @@
 package com.example.tianjun.projecttest;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.example.tianjun.projecttest.Adapter.MainPagerAdapter;
@@ -40,8 +42,11 @@ public class MainActivity extends CustomerAppCompatActivity {
     RadioButton mShowSelector;
     @BindView(R.id.main_bottom_selector_mine)
     RadioButton mMineSelecotr;
+    @BindView(R.id.main_load_img)
+    ImageView mloadImg;
     private Context mContext;
     public MenuDrawer mMenuDrawer;
+    private AnimationDrawable mLoadAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +63,35 @@ public class MainActivity extends CustomerAppCompatActivity {
         init();
     }
 
+    private void initLoadImage() {
+        mloadImg.setVisibility(View.VISIBLE);
+        mLoadAnim = (AnimationDrawable) mloadImg.getBackground();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mLoadAnim != null){
+            mLoadAnim.stop();
+            mloadImg.setVisibility(View.GONE);
+        }
+    }
+
+    public void startLoadImage(){
+        mloadImg.setVisibility(View.VISIBLE);
+        mLoadAnim.start();
+    }
+
+    public void stopLoadImage(){
+        mLoadAnim.stop();
+        mloadImg.setVisibility(View.GONE);
+    }
+
+
+
     private void init() {
         ButterKnife.bind(this);
+        initLoadImage();
         loadData();
         initView();
     }
