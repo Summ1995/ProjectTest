@@ -1,6 +1,7 @@
 package com.example.tianjun.projecttest.Product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,13 +20,17 @@ import android.view.WindowManager;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.tianjun.projecttest.Bean.Product.Product_Info_GridLayout_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_Info_Gson;
 import com.example.tianjun.projecttest.Bean.Product.Product_Info_ReadMe_Gson;
+import com.example.tianjun.projecttest.CommentActivity;
 import com.example.tianjun.projecttest.CustomerView.AlphaTitleScrollView;
+import com.example.tianjun.projecttest.DetailActivity;
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.Util.ConstantClz;
 import com.example.tianjun.projecttest.Util.HttpRequest;
 import com.squareup.picasso.Picasso;
 
@@ -84,6 +89,8 @@ public class Product_Info extends AppCompatActivity {
     LinearLayout mComment_add_ll;
     @BindView(R.id.comment_num)
     TextView mComment_num;
+    @BindView(R.id.product_info_back)
+    RelativeLayout mProduct_info_back;
 
     @BindView(R.id.readme_content_ll)
     LinearLayout readme_content_ll;
@@ -98,8 +105,8 @@ public class Product_Info extends AppCompatActivity {
     GridLayout mSomething_grid;
 
 
-    @BindView(R.id.bar)
-    Toolbar toolbar;
+    @BindView(R.id.product_info_bar)
+    Toolbar product_toolbar;
     @BindView(R.id.scroll)
     AlphaTitleScrollView alphaTitleScrollView;
 
@@ -115,6 +122,9 @@ public class Product_Info extends AppCompatActivity {
     private Product_Info_GridLayout_Gson mBody;
     private int width;
     private int n;
+    private String topic_id1;
+    private String topic_id2;
+    private String topic_id3;
 
 
     @Override
@@ -124,8 +134,16 @@ public class Product_Info extends AppCompatActivity {
         setContentView(R.layout.product__info);
         mContext = this;
         ButterKnife.bind(this);
-        alphaTitleScrollView.setTitleAndHead(toolbar, mViewPager);
-        toolbar.getBackground().setAlpha(0);
+
+        mProduct_info_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        alphaTitleScrollView.setTitleAndHead(product_toolbar, mViewPager);
+        product_toolbar.getBackground().setAlpha(0);
         initData();
     }
 
@@ -205,7 +223,7 @@ public class Product_Info extends AppCompatActivity {
         }
     }
 
-    private void setGridLayout(int getNum, int i, int j) {
+    private void setGridLayout(final int getNum, int i, int j) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.product_info_gridlayout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.title_img);
         TextView price_tv = (TextView) view.findViewById(R.id.price_tv);
@@ -223,6 +241,15 @@ public class Product_Info extends AppCompatActivity {
         layoutParams.width = imageWidth;
         layoutParams.height = imageHeigth;
         imageView.setLayoutParams(layoutParams);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(mContext,Product_Info.class);
+                intent.putExtra("goods_id",mBody.getInfo().get(getNum).getGoods_id());
+                mContext.startActivity(intent);
+            }
+        });
         Picasso.with(mContext).load(goods_thumb).into(imageView);
 
         price_tv.setText(shop_price);
@@ -239,7 +266,38 @@ public class Product_Info extends AppCompatActivity {
         Picasso.with(mContext).load(readMeInfo.get(0).getTopic_img()).resize(720,360).into(readme_img1);
         Picasso.with(mContext).load(readMeInfo.get(1).getTopic_img()).resize(720,360).into(readme_img2);
         Picasso.with(mContext).load(readMeInfo.get(2).getTopic_img()).resize(720,360).into(readme_img3);
+        topic_id1 = readMeInfo.get(0).getTopic_id();
+        topic_id2 = readMeInfo.get(1).getTopic_id();
+        topic_id3 = readMeInfo.get(2).getTopic_id();
+        readme_img1.setOnClickListener(clickListener);
+        readme_img2.setOnClickListener(clickListener);
+        readme_img3.setOnClickListener(clickListener);
+
+
     }
+    private View.OnClickListener clickListener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent();
+           switch (v.getId()){
+               case R.id.readme_img1:
+                   intent.putExtra(ConstantClz.DETAIL_TOPIC_ID,topic_id1);
+                   intent.setClass(mContext, DetailActivity.class);
+                   startActivity(intent);
+                   break;
+               case R.id.readme_img2:
+                   intent.putExtra(ConstantClz.DETAIL_TOPIC_ID,topic_id2);
+                   intent.setClass(mContext, DetailActivity.class);
+                   startActivity(intent);
+                   break;
+               case R.id.readme_img3:
+                   intent.putExtra(ConstantClz.DETAIL_TOPIC_ID,topic_id3);
+                   intent.setClass(mContext, DetailActivity.class);
+                   startActivity(intent);
+                   break;
+           }
+        }
+    };
 
     private void initFragment(Product_Info_Gson.InfoBean info) {
         fragment = new Fragment[3];
@@ -247,7 +305,6 @@ public class Product_Info extends AppCompatActivity {
         fragment[0] = fragmentManager.findFragmentById(R.id.size_type_no);
         fragment[1] = fragmentManager.findFragmentById(R.id.size_type_yes);
         fragment[2] = fragmentManager.findFragmentById(R.id.comment_fra);
-
         fragmentTransaction = fragmentManager.beginTransaction().hide(fragment[0]).hide(fragment[1]).hide(fragment[2]);
         if (info.getSize_type().equals("0")) {
             fragmentTransaction.show(fragment[0]).show(fragment[2]).commit();
@@ -339,28 +396,28 @@ public class Product_Info extends AppCompatActivity {
                 mSize_img.setImageResource(R.drawable.sizecode_1);
                 break;
             case "2":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_2);
                 break;
             case "3":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_3);
                 break;
             case "4":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_4);
                 break;
             case "5":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_5);
                 break;
             case "6":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_6);
                 break;
             case "7":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_7);
                 break;
             case "8":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_8);
                 break;
             case "9":
-                mSize_img.setImageResource(R.drawable.sizecode_1);
+                mSize_img.setImageResource(R.drawable.sizecode_9);
                 break;
         }
 
@@ -379,7 +436,7 @@ public class Product_Info extends AppCompatActivity {
      * 动态添加show_img图片
      */
     public void setShow_img() {
-        List<String> show_img = mInfo.getShow_img();
+        final List<String> show_img = mInfo.getShow_img();
         List<String> show_img_size = mInfo.getShow_img_size();
 
         for (int i = 0; i < show_img.size(); i++) {

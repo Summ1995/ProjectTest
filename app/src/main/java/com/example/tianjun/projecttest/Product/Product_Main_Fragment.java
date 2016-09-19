@@ -1,5 +1,7 @@
 package com.example.tianjun.projecttest.Product;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,8 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.tianjun.projecttest.R;
+import com.example.tianjun.projecttest.SearchHomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +34,11 @@ public class Product_Main_Fragment extends Fragment {
 
     @BindView(R.id.bar)
     Toolbar mBar;
+    @BindView(R.id.search_img)
+    ImageView search_img;
     @BindView(R.id.main_tab)
     TabLayout mMain_tab;
+    private Context mContext;
 
     public static Product_Main_Fragment newInstance(int width) {
         Product_Main_Fragment product_main_fragment = new Product_Main_Fragment();
@@ -41,13 +48,29 @@ public class Product_Main_Fragment extends Fragment {
         return product_main_fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext=getContext();
+    }
+
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.product_main_fragment, container, false);
         Bundle bundle = getArguments();
         width = bundle.getInt("windowWidth");
         ButterKnife.bind(this, view);
+        search_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(mContext, SearchHomeActivity.class);
+                mContext.startActivity(intent);
+
+            }
+        });
+
         initFragment();
         initTabLayout();
         return view;

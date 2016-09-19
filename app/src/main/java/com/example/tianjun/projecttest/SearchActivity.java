@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,10 +64,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void loadData() {
+        WindowManager windowManager=getWindowManager();
+        int width = windowManager.getDefaultDisplay().getWidth();
+
         mFragmentList = new ArrayList();
         mTitleList = new ArrayList();
         mFragmentList.add(TopicFragment.newInstance(mSearchKey));
-        mFragmentList.add(GoodsFragment.newInstance(mSearchKey));
+        mFragmentList.add(GoodsFragment.newInstance(mSearchKey,width));
         mTitleList.add("专题");
         mTitleList.add("单品");
     }

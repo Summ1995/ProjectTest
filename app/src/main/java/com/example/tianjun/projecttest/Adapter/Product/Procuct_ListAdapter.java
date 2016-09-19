@@ -134,6 +134,7 @@ public class Procuct_ListAdapter extends BaseAdapter {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked){
                 Toast.makeText(mContext, "+5积分", Toast.LENGTH_SHORT).show();
+
             }else if(!isChecked){
                 Toast.makeText(mContext, "取消收藏成功", Toast.LENGTH_SHORT).show();
             }

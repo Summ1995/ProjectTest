@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -80,13 +81,13 @@ public class Product_Fragment extends Fragment {
     private List<Product_Head_Gson.InfoBean.ItemsBean> mViewPager_List;
     private List<Product_List_Gson.InfoBean.GoodsBean> goods;
     private List<Product_List_Gson.InfoBean.GoodsBean> listGoods = new ArrayList<>();
-    private List<Product_Head_Gson.InfoBean.RecommendBean> mRecommend;
+    private List<Product_Head_Gson.InfoBean.RecommendBean> mRecommend=new ArrayList<>();
     private Product_HeadViewPager mProduct_headViewPager;
     private Procuct_ListAdapter mProcuct_listAdapter;
     private ImageView mPrefecture_img;
-    private List<Product_Head_Gson.InfoBean.GoodsListBean> mGoods_list;
+    private List<Product_Head_Gson.InfoBean.GoodsListBean> mGoods_list=new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;
-    private Product_Type_Gson.InfoBean infoBean;
+    private Product_Type_Gson.InfoBean infoBean=new Product_Type_Gson.InfoBean();
 
     private Context mContext;
     private int windowWidth;
@@ -124,7 +125,6 @@ public class Product_Fragment extends Fragment {
             windowWidth = bundle.getInt("windowWidth");
         }
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -221,6 +221,16 @@ public class Product_Fragment extends Fragment {
                 mChoosetype_rg.setOnCheckedChangeListener(onCheckedChangeListener);
                 mChoosetype_rg.check(R.id.rb1);
                 mType_gridview.setAdapter(typeGridView);
+                mType_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent=new Intent();
+                        intent.setClass(mContext,Product_GridInfo.class);
+                        intent.putExtra("catId",infoBean.getCat_id().get(position).getId());
+                        intent.putExtra("name",infoBean.getCat_id().get(position).getName());
+                        mContext.startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -353,6 +363,7 @@ public class Product_Fragment extends Fragment {
         });
     }
 
+
     /**
      * 为PullrefreshGridView添加头部视图
      */
@@ -476,19 +487,27 @@ public class Product_Fragment extends Fragment {
             switch (v.getId()) {
                 case R.id.seckill_img:
                     String catId = mRecommend.get(0).getCat_id();
+                    String name=mRecommend.get(0).getCat_name();
                     intent.putExtra("catId", catId);
+                    intent.putExtra("name",name);
                     break;
                 case R.id.prefecture_img:
                     String catId2 = mRecommend.get(1).getCat_id();
+                    String name2=mRecommend.get(1).getCat_name();
                     intent.putExtra("catId", catId2);
+                    intent.putExtra("name",name2);
                     break;
                 case R.id.hot_img:
                     String catId3 = mRecommend.get(2).getCat_id();
+                    String name3=mRecommend.get(2).getCat_name();
                     intent.putExtra("catId", catId3);
+                    intent.putExtra("name",name3);
                     break;
                 case R.id.recommend_img:
                     String catId4 = mRecommend.get(3).getCat_id();
+                    String name4=mRecommend.get(3).getCat_name();
                     intent.putExtra("catId", catId4);
+                    intent.putExtra("name",name4);
                     break;
             }
             intent.setClass(mContext, Product_GridInfo.class);
@@ -497,6 +516,11 @@ public class Product_Fragment extends Fragment {
         }
     };
 
+
+
+
+
+    //以下全是适配器部分
     class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
         public ImageView mRecylerview_title_img;
         public TextView mTitle_img_num, mGoods_english_name_tv, mGoods_name_tv, mCurrency_price_tv;
@@ -523,13 +547,22 @@ public class Product_Fragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerViewViewHolder holder, int position) {
+        public void onBindViewHolder(RecyclerViewViewHolder holder, final int position) {
             holder.mGoods_english_name_tv.setText(mGoods_list.get(position).getGoods_english_name() + " " + mGoods_list.get(position).getGoods_name());
             holder.mCurrency_price_tv.setText(mGoods_list.get(position).getCurrency_price());
-            holder.mTitle_img_num.setText(position + "");
+            holder.mTitle_img_num.setText((position +1)+ "");
 
             String url = mGoods_list.get(position).getGoods_thumb();
             Picasso.with(mContext).load(url).into(holder.mRecylerview_title_img);
+            holder.mRecylerview_title_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent();
+                    intent.setClass(mContext,Product_Info.class);
+                    intent.putExtra("goods_id",mGoods_list.get(position).getGoods_id());
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
 

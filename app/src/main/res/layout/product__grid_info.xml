@@ -3,12 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
     tools:context="com.example.tianjun.projecttest.Product.Product_GridInfo">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/grid_info_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:background="@color/colorToolBar">
+        <ImageView
+            android:id="@+id/gridInfo_back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"/>
+        <TextView
+            android:id="@+id/GridInfo_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
 
     <com.handmark.pulltorefresh.library.PullToRefreshGridView
         android:id="@+id/grid_info"
         android:numColumns="2"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@id/grid_info_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

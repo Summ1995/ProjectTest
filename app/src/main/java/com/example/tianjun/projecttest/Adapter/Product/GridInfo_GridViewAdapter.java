@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.tianjun.projecttest.Bean.Product.Product_GridInfo_Gson;
@@ -23,10 +24,12 @@ import butterknife.ButterKnife;
 public class GridInfo_GridViewAdapter extends BaseAdapter {
     private Context mContext;
     private List<Product_GridInfo_Gson.InfoBean.GoodsBean> mGoods;
+    private int width;
 
-    public GridInfo_GridViewAdapter(Context mContext, List<Product_GridInfo_Gson.InfoBean.GoodsBean> mGoods) {
+    public GridInfo_GridViewAdapter(Context mContext, List<Product_GridInfo_Gson.InfoBean.GoodsBean> mGoods,int width) {
         this.mContext = mContext;
         this.mGoods = mGoods;
+        this.width=width;
     }
 
     @Override
@@ -58,6 +61,12 @@ public class GridInfo_GridViewAdapter extends BaseAdapter {
         viewHolder.mEnglish_name_tv.setText(mGoods.get(position).getEnglish_name());
         viewHolder.mGoods_name_tv.setText(mGoods.get(position).getGoods_name());
         viewHolder.mShop_price_tv.setText(mGoods.get(position).getShop_price());
+
+        ViewGroup.LayoutParams layoutParams = viewHolder.mTitle_img.getLayoutParams();
+
+        layoutParams.height=width/2;
+        viewHolder.mTitle_img.setLayoutParams(layoutParams);
+
         String url = mGoods.get(position).getThumb();
         Picasso.with(mContext).load(url).into(viewHolder.mTitle_img);
         return view;

@@ -21,11 +21,13 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/me_info_back_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:src="@drawable/arrow_left" />
         <TextView
+            android:id="@+id/add_info_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提交"

@@ -41,6 +41,8 @@ public class Me_Recommend_Info extends AppCompatActivity {
     MyListView mRanking_list;
     @BindView(R.id.people_ll)
     LinearLayout mPeople_ll;
+    @BindView(R.id.recommend_back_img)
+    ImageView recommend_back_img;
 
     private List<Me_Ranking_Gson.InfoBean> info;
     private Context mContext;
@@ -49,6 +51,12 @@ public class Me_Recommend_Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me__recommend__info);
         ButterKnife.bind(this);
+        recommend_back_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mContext=this;
         initData();
     }

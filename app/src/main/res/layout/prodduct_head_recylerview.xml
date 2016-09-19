@@ -2,7 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
     <RelativeLayout
         android:id="@+id/title_img_rl"
         android:layout_width="wrap_content"

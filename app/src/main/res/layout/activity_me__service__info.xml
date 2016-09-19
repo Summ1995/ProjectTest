@@ -3,13 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tianjun.projecttest.Me.Me_Service_Info">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/service_info_bar"
+        android:layout_width="match_parent"
+        android:background="@color/colorToolBar"
+
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/service_back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="客服消息"
+            android:textSize="20sp"
+            android:textColor="#ffffff"/>
+
+    </android.support.v7.widget.Toolbar>
 <com.handmark.pulltorefresh.library.PullToRefreshListView
     android:id="@+id/service_Info_list"
+    android:layout_below="@id/service_info_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 </RelativeLayout>
