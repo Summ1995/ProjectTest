@@ -154,6 +154,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
 
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
+            mActivity.startLoadImage();
             String catId = tab.getTag().toString();
             if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE) && mCategorySV.getVisibility() == View.VISIBLE){
                 tab.setIcon(R.drawable.arrow_index_down);
@@ -174,12 +175,14 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
 
         @Override
         public void onTabReselected(TabLayout.Tab tab) {
+            mActivity.startLoadImage();
             String catId = tab.getTag().toString();
             if (catId.equals(ConstantClz.HOME_TAB_CATEGORY_CODE)){
                 if (mCategorySV.getVisibility() == View.VISIBLE){
                     mCategorySV.setVisibility(View.GONE);
                     mHomeList.setVisibility(View.VISIBLE);
                     tab.setIcon(R.drawable.arrow_index_down);
+                    mActivity.stopLoadImage();
                 }else {
                     tab.setIcon(R.drawable.arrow_red_up);
                     initList(catId);
@@ -285,6 +288,7 @@ public class HomeMainFragment extends Fragment implements IHomeView,PullToRefres
     @Override
     public void getRequestCategoryBean(CategoryBean.InfoBean bean) {
         HomeCategoryView.initCategory(mCategoryRL,bean,mContext);
+        mActivity.stopLoadImage();
     }
 
     /**
